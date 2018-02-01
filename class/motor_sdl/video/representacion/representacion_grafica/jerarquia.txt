@@ -1,0 +1,28 @@
+Representacion_grafica
+
+	Representacion_lienzo
+
+	Representacion_manual	(permite la manipulación de lo que queramos)
+
+		Representacion_compuesta
+
+			Representacion_compuesta_dinamica
+			Representacion_compuesta_estatica
+
+		Representacion_texto
+
+			Representacion_texto_auto	//Este escoge él sólo su tamaño.
+
+				Representacion_texto_auto_dinamica
+				Representacion_texto_auto_estatica
+
+			Representacion_texto_fija	//Este tiene un tamaño que tú le das.
+
+				Representacion_texto_fija_dinamica
+				Representacion_texto_fija_estatica
+
+	Representacion_bitmap (fuerza a usar un recurso existente)
+
+		Representacion_bitmap_estatica
+		Representacion_bitmap_dinamica	
+

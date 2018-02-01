@@ -1,0 +1,11 @@
+v:1
+esquema_control:0
+pantalla_completa:0
+modo_hardware:0
+volumen_audio:128
+volumen_musica:0
+idioma:0
+audio_ratio:44100
+audio_salidas:2
+audio_buffers:1024
+audio_canales:8

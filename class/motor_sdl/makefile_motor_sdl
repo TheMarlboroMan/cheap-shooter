@@ -1,0 +1,415 @@
+CFLAGS=-c -g -O0 -Wno-deprecated -Wall -ansi -pedantic -std=c++0x 
+#-DLOG_BASE_SILENCIOSO=1
+#CFLAGS=-c -g -O3 -Wno-deprecated -Wall -ansi -pedantic -std=c++0x
+#CFLAGS=-c -g -O0 -Wno-deprecated -Wall -ansi -pedantic
+#CFLAGS=-c -Wno-deprecated -Wall -ansi -pedantic
+CC=g++
+CLINK= 
+CLINK_A= 
+DIR_CLASS_V=./class/motor_sdl/video/
+DIR_CLASS_A=./class/motor_sdl/audio/
+DIR_CLASS_H=./class/motor_sdl/herramientas/
+DIR_CLASS_I=./class/motor_sdl/input/
+DIR_O=./objects_motor_sdl/
+OBJETOS=$(DIR_O)pantalla.o \
+	$(DIR_O)controlador_fps_sdl.o \
+	$(DIR_O)gestor_recursos_graficos.o \
+	$(DIR_O)log_grafico.o \
+	$(DIR_O)log_grafico_enlazado.o \
+	$(DIR_O)representacion.o \
+	$(DIR_O)representacion_grafica.o \
+	$(DIR_O)representacion_manual.o \
+	$(DIR_O)representacion_lienzo.o \
+	$(DIR_O)representacion_agrupada.o \
+	$(DIR_O)representacion_patron.o \
+	$(DIR_O)representacion_compuesta.o \
+	$(DIR_O)representacion_bitmap.o \
+	$(DIR_O)representacion_pixeles.o \
+	$(DIR_O)representacion_texto.o \
+	$(DIR_O)representacion_texto_fija.o \
+	$(DIR_O)representacion_texto_auto.o \
+	$(DIR_O)recurso_grafico.o \
+	$(DIR_O)primitiva_grafica.o \
+	$(DIR_O)primitiva_grafica_linea.o \
+	$(DIR_O)primitiva_grafica_caja.o \
+	$(DIR_O)primitiva_grafica_circunferencia.o \
+	$(DIR_O)imagen.o \
+	$(DIR_O)lienzo.o \
+	$(DIR_O)gestor_mapa_static.o \
+	$(DIR_O)gestor_mapa_instanciable.o \
+	$(DIR_O)gestor_vector_static.o \
+	$(DIR_O)gestor_vector_instanciable.o \
+	$(DIR_O)camara.o \
+	$(DIR_O)vector_2d.o \
+	$(DIR_O)punto_2d.o \
+	$(DIR_O)linea.o \
+	$(DIR_O)log_base.o \
+	$(DIR_O)herramientas_sdl.o \
+	$(DIR_O)localizador_base.o \
+	$(DIR_O)herramientas.o \
+	$(DIR_O)controlador_argumentos.o \
+	$(DIR_O)hilo_sdl.o \
+	$(DIR_O)gestor_color.o \
+	$(DIR_O)escritor_texto.o \
+	$(DIR_O)controles_sdl.o \
+	$(DIR_O)controlador_audio_sdl.o \
+	$(DIR_O)gestor_recursos_audio.o \
+	$(DIR_O)sonido.o \
+	$(DIR_O)musica.o \
+	$(DIR_O)cola_sonido.o \
+	$(DIR_O)mapa_colision_bitmap.o \
+	$(DIR_O)proceso_superficie.o \
+	$(DIR_O)proceso_superficie_base_por_pixel.o \
+	$(DIR_O)proceso_superficie_fundido.o \
+	$(DIR_O)proceso_superficie_cambiar_colores.o \
+	$(DIR_O)proceso_superficie_alterar_canales_rgb.o \
+	$(DIR_O)proceso_superficie_blanco_negro.o \
+	$(DIR_O)utilidades_graficas_sdl.o
+
+libDanSDL.a: $(OBJETOS)
+	ar rcs libDanSDL.a $(OBJETOS)
+
+################################################################################
+# VIDEO
+
+$(DIR_O)pantalla.o: \
+$(DIR_CLASS_V)pantalla/pantalla.h \
+$(DIR_CLASS_V)pantalla/pantalla.cpp \
+$(DIR_O)utilidades_graficas_sdl.o \
+$(DIR_O)camara.o \
+$(DIR_O)gestor_color.o
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)pantalla/pantalla.cpp -o $(DIR_O)pantalla.o $(CLINK)
+
+$(DIR_O)gestor_recursos_graficos.o: \
+$(DIR_CLASS_V)gestor_recursos_graficos/gestor_recursos_graficos.h \
+$(DIR_CLASS_V)gestor_recursos_graficos/gestor_recursos_graficos.cpp \
+$(DIR_O)recurso_grafico.o \
+$(DIR_O)imagen.o \
+$(DIR_O)gestor_vector_static.o
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)gestor_recursos_graficos/gestor_recursos_graficos.cpp -o $(DIR_O)gestor_recursos_graficos.o $(CLINK)
+
+$(DIR_O)representacion_agrupada.o :\
+$(DIR_O)representacion.o \
+$(DIR_CLASS_V)representacion/representacion_agrupada/representacion_agrupada.h \
+$(DIR_CLASS_V)representacion/representacion_agrupada/representacion_agrupada.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/representacion_agrupada/representacion_agrupada.cpp -o $(DIR_O)representacion_agrupada.o $(CLINK)
+
+$(DIR_O)representacion_texto_auto.o: \
+$(DIR_O)representacion_texto.o \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_texto/representacion_texto_auto.h \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_texto/representacion_texto_auto.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/representacion_grafica/representacion_texto/representacion_texto_auto.cpp -o $(DIR_O)representacion_texto_auto.o $(CLINK)
+
+$(DIR_O)representacion_texto_fija.o: \
+$(DIR_O)representacion_texto.o \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_texto/representacion_texto_fija.h \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_texto/representacion_texto_fija.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/representacion_grafica/representacion_texto/representacion_texto_fija.cpp -o $(DIR_O)representacion_texto_fija.o $(CLINK)
+
+$(DIR_O)representacion_texto.o: \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_texto/representacion_texto.h \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_texto/representacion_texto.cpp \
+$(DIR_O)representacion_manual.o
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/representacion_grafica/representacion_texto/representacion_texto.cpp -o $(DIR_O)representacion_texto.o $(CLINK)
+
+$(DIR_O)representacion_bitmap.o: \
+$(DIR_O)representacion_grafica.o \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_bitmap/representacion_bitmap.h \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_bitmap/representacion_bitmap.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/representacion_grafica/representacion_bitmap/representacion_bitmap.cpp -o $(DIR_O)representacion_bitmap.o $(CLINK) 
+
+$(DIR_O)representacion_pixeles.o: \
+$(DIR_O)representacion_lienzo.o \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_pixeles/representacion_pixeles.h \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_pixeles/representacion_pixeles.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/representacion_grafica/representacion_pixeles/representacion_pixeles.cpp -o $(DIR_O)representacion_pixeles.o $(CLINK)  
+
+$(DIR_O)representacion_compuesta.o: \
+$(DIR_O)representacion_lienzo.o \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_compuesta/representacion_compuesta.h \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_compuesta/representacion_compuesta.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/representacion_grafica/representacion_compuesta/representacion_compuesta.cpp -o $(DIR_O)representacion_compuesta.o $(CLINK)
+
+$(DIR_O)representacion_lienzo.o: \
+$(DIR_O)representacion_manual.o \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_lienzo.h \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_lienzo.cpp \
+$(DIR_O)representacion_grafica.o
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/representacion_grafica/representacion_lienzo.cpp -o $(DIR_O)representacion_lienzo.o $(CLINK) 
+
+$(DIR_O)representacion_manual.o: \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_manual.h \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_manual.cpp \
+$(DIR_O)representacion_grafica.o
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/representacion_grafica/representacion_manual.cpp -o $(DIR_O)representacion_manual.o $(CLINK) 
+
+$(DIR_O)camara.o: \
+$(DIR_CLASS_V)camara/camara.h \
+$(DIR_CLASS_V)camara/camara.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)camara/camara.cpp -o $(DIR_O)camara.o $(CLINK)
+
+$(DIR_O)representacion_grafica.o: \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_grafica.h \
+$(DIR_CLASS_V)representacion/representacion_grafica/representacion_grafica.cpp \
+$(DIR_O)recurso_grafico.o \
+$(DIR_O)representacion.o \
+$(DIR_O)utilidades_graficas_sdl.o
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/representacion_grafica/representacion_grafica.cpp -o $(DIR_O)representacion_grafica.o $(CLINK)
+
+$(DIR_O)lienzo.o: \
+$(DIR_O)recurso_grafico.o \
+$(DIR_CLASS_V)recurso_grafico/lienzo.h \
+$(DIR_CLASS_V)recurso_grafico/lienzo.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)recurso_grafico/lienzo.cpp -o $(DIR_O)lienzo.o $(CLINK)
+
+$(DIR_O)imagen.o: \
+$(DIR_O)recurso_grafico.o \
+$(DIR_CLASS_V)recurso_grafico/imagen.h \
+$(DIR_CLASS_V)recurso_grafico/imagen.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)recurso_grafico/imagen.cpp -o $(DIR_O)imagen.o $(CLINK)
+
+$(DIR_O)recurso_grafico.o: \
+$(DIR_O)utilidades_graficas_sdl.o \
+$(DIR_CLASS_V)recurso_grafico/recurso_grafico.h \
+$(DIR_CLASS_V)recurso_grafico/recurso_grafico.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)recurso_grafico/recurso_grafico.cpp -o $(DIR_O)recurso_grafico.o $(CLINK)
+
+$(DIR_O)primitiva_grafica_caja.o: \
+$(DIR_O)primitiva_grafica.o \
+$(DIR_CLASS_V)representacion/primitiva_grafica/primitiva_grafica_caja/primitiva_grafica_caja.h \
+$(DIR_CLASS_V)representacion/primitiva_grafica/primitiva_grafica_caja/primitiva_grafica_caja.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/primitiva_grafica/primitiva_grafica_caja/primitiva_grafica_caja.cpp -o $(DIR_O)primitiva_grafica_caja.o $(CLINK)
+
+$(DIR_O)primitiva_grafica_circunferencia.o: \
+$(DIR_O)utilidades_graficas_sdl.o \
+$(DIR_O)primitiva_grafica.o \
+$(DIR_CLASS_V)representacion/primitiva_grafica/primitiva_grafica_circunferencia/primitiva_grafica_circunferencia.h \
+$(DIR_CLASS_V)representacion/primitiva_grafica/primitiva_grafica_circunferencia/primitiva_grafica_circunferencia.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/primitiva_grafica/primitiva_grafica_circunferencia/primitiva_grafica_circunferencia.cpp -o $(DIR_O)primitiva_grafica_circunferencia.o $(CLINK)
+
+$(DIR_O)primitiva_grafica_linea.o: \
+$(DIR_O)utilidades_graficas_sdl.o \
+$(DIR_O)primitiva_grafica.o \
+$(DIR_CLASS_V)representacion/primitiva_grafica/primitiva_grafica_linea/primitiva_grafica_linea.h \
+$(DIR_CLASS_V)representacion/primitiva_grafica/primitiva_grafica_linea/primitiva_grafica_linea.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/primitiva_grafica/primitiva_grafica_linea/primitiva_grafica_linea.cpp -o $(DIR_O)primitiva_grafica_linea.o $(CLINK)
+
+$(DIR_O)representacion_patron.o: \
+$(DIR_O)primitiva_grafica.o \
+$(DIR_CLASS_V)representacion/primitiva_grafica/representacion_patron/representacion_patron.h \
+$(DIR_CLASS_V)representacion/primitiva_grafica/representacion_patron/representacion_patron.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/primitiva_grafica/representacion_patron/representacion_patron.cpp -o $(DIR_O)representacion_patron.o $(CLINK)
+
+
+$(DIR_O)primitiva_grafica.o: \
+$(DIR_O)representacion.o \
+$(DIR_CLASS_V)representacion/primitiva_grafica/primitiva_grafica.h \
+$(DIR_CLASS_V)representacion/primitiva_grafica/primitiva_grafica.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/primitiva_grafica/primitiva_grafica.cpp -o $(DIR_O)primitiva_grafica.o $(CLINK)
+
+$(DIR_O)representacion.o: \
+$(DIR_O)herramientas_sdl.o \
+$(DIR_O)camara.o \
+$(DIR_O)pantalla.o \
+$(DIR_CLASS_V)representacion/representacion.h \
+$(DIR_CLASS_V)representacion/representacion.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)representacion/representacion.cpp -o $(DIR_O)representacion.o $(CLINK)
+
+$(DIR_O)gestor_color.o: \
+$(DIR_CLASS_V)gestor_color/gestor_color.h \
+$(DIR_CLASS_V)gestor_color/gestor_color.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)gestor_color/gestor_color.cpp -o $(DIR_O)gestor_color.o $(CLINK)
+
+$(DIR_O)controlador_fps_sdl.o: \
+$(DIR_CLASS_H)controlador_fps_sdl/controlador_fps_sdl.h \
+$(DIR_CLASS_H)controlador_fps_sdl/controlador_fps_sdl.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_H)controlador_fps_sdl/controlador_fps_sdl.cpp -o $(DIR_O)controlador_fps_sdl.o $(CLINK)
+
+$(DIR_O)mapa_colision_bitmap.o: \
+$(DIR_O)utilidades_graficas_sdl.o \
+$(DIR_CLASS_V)mapa_colision_bitmap/mapa_colision_bitmap.h \
+$(DIR_CLASS_V)mapa_colision_bitmap/mapa_colision_bitmap.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)mapa_colision_bitmap/mapa_colision_bitmap.cpp -o $(DIR_O)mapa_colision_bitmap.o $(CLINK)
+
+$(DIR_O)utilidades_graficas_sdl.o: \
+$(DIR_O)herramientas.o \
+$(DIR_O)log_base.o \
+$(DIR_CLASS_V)utilidades_graficas_sdl/utilidades_graficas_sdl.h \
+$(DIR_CLASS_V)utilidades_graficas_sdl/utilidades_graficas_sdl.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)utilidades_graficas_sdl/utilidades_graficas_sdl.cpp -o $(DIR_O)utilidades_graficas_sdl.o $(CLINK)
+
+$(DIR_O)log_grafico_enlazado.o: \
+$(DIR_O)log_grafico.o \
+$(DIR_O)log_base.o \
+$(DIR_CLASS_V)log_grafico/log_grafico_enlazado.h \
+$(DIR_CLASS_V)log_grafico/log_grafico_enlazado.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)log_grafico/log_grafico_enlazado.cpp -o $(DIR_O)log_grafico_enlazado.o $(CLINK)
+
+$(DIR_O)log_grafico.o: \
+$(DIR_O)herramientas.o \
+$(DIR_O)representacion_texto_fija.o \
+$(DIR_CLASS_V)log_grafico/log_grafico.h \
+$(DIR_CLASS_V)log_grafico/log_grafico.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)log_grafico/log_grafico.cpp -o $(DIR_O)log_grafico.o $(CLINK)
+
+
+$(DIR_O)proceso_superficie_cambiar_colores.o: \
+$(DIR_O)proceso_superficie_base_por_pixel.o \
+$(DIR_CLASS_V)proceso_superficie/proceso_superficie_cambiar_colores.h \
+$(DIR_CLASS_V)proceso_superficie/proceso_superficie_cambiar_colores.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)proceso_superficie/proceso_superficie_cambiar_colores.cpp -o $(DIR_O)proceso_superficie_cambiar_colores.o $(CLINK)
+
+$(DIR_O)proceso_superficie_blanco_negro.o: \
+$(DIR_O)proceso_superficie_base_por_pixel.o \
+$(DIR_CLASS_V)proceso_superficie/proceso_superficie_blanco_negro.h \
+$(DIR_CLASS_V)proceso_superficie/proceso_superficie_blanco_negro.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)proceso_superficie/proceso_superficie_blanco_negro.cpp -o $(DIR_O)proceso_superficie_blanco_negro.o $(CLINK)
+
+$(DIR_O)proceso_superficie_alterar_canales_rgb.o: \
+$(DIR_O)proceso_superficie_base_por_pixel.o \
+$(DIR_CLASS_V)proceso_superficie/proceso_superficie_alterar_canales_rgb.h \
+$(DIR_CLASS_V)proceso_superficie/proceso_superficie_alterar_canales_rgb.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)proceso_superficie/proceso_superficie_alterar_canales_rgb.cpp -o $(DIR_O)proceso_superficie_alterar_canales_rgb.o $(CLINK)
+
+$(DIR_O)proceso_superficie_base_por_pixel.o: \
+$(DIR_O)proceso_superficie.o \
+$(DIR_O)gestor_color.o \
+$(DIR_O)utilidades_graficas_sdl.o \
+$(DIR_CLASS_V)proceso_superficie/proceso_superficie_base_por_pixel.h \
+$(DIR_CLASS_V)proceso_superficie/proceso_superficie_base_por_pixel.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)proceso_superficie/proceso_superficie_base_por_pixel.cpp -o $(DIR_O)proceso_superficie_base_por_pixel.o $(CLINK)
+
+$(DIR_O)proceso_superficie_fundido.o: \
+$(DIR_O)proceso_superficie.o \
+$(DIR_O)gestor_color.o \
+$(DIR_O)linea.o \
+$(DIR_O)utilidades_graficas_sdl.o \
+$(DIR_CLASS_V)proceso_superficie/proceso_superficie_fundido.h \
+$(DIR_CLASS_V)proceso_superficie/proceso_superficie_fundido.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)proceso_superficie/proceso_superficie_fundido.cpp -o $(DIR_O)proceso_superficie_fundido.o $(CLINK)
+
+$(DIR_O)proceso_superficie.o: \
+$(DIR_CLASS_V)proceso_superficie/proceso_superficie.h \
+$(DIR_CLASS_V)proceso_superficie/proceso_superficie.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_V)proceso_superficie/proceso_superficie.cpp -o $(DIR_O)proceso_superficie.o $(CLINK)
+
+################################################################################
+# AUDIO
+
+$(DIR_O)cola_sonido.o: \
+$(DIR_O)controlador_audio_sdl.o \
+$(DIR_O)sonido.o \
+$(DIR_CLASS_A)cola_sonido/cola_sonido.h \
+$(DIR_CLASS_A)cola_sonido/cola_sonido.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_A)cola_sonido/cola_sonido.cpp -o $(DIR_O)cola_sonido.o $(CLINK_A)
+
+$(DIR_O)controlador_audio_sdl.o: \
+$(DIR_O)sonido.o \
+$(DIR_O)musica.o \
+$(DIR_CLASS_A)controlador_audio_sdl/controlador_audio_sdl.h \
+$(DIR_CLASS_A)controlador_audio_sdl/controlador_audio_sdl.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_A)controlador_audio_sdl/controlador_audio_sdl.cpp -o $(DIR_O)controlador_audio_sdl.o $(CLINK_A)
+
+$(DIR_O)gestor_recursos_audio.o: \
+$(DIR_O)sonido.o \
+$(DIR_O)musica.o \
+$(DIR_O)gestor_mapa_static.o \
+$(DIR_CLASS_A)gestor_recursos_audio/gestor_recursos_audio.h \
+$(DIR_CLASS_A)gestor_recursos_audio/gestor_recursos_audio.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_A)gestor_recursos_audio/gestor_recursos_audio.cpp -o $(DIR_O)gestor_recursos_audio.o $(CLINK_A)
+
+$(DIR_O)musica.o: \
+$(DIR_CLASS_A)musica/musica.h \
+$(DIR_CLASS_A)musica/musica.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_A)musica/musica.cpp -o $(DIR_O)musica.o $(CLINK_A)
+
+$(DIR_O)sonido.o: \
+$(DIR_O)log_base.o \
+$(DIR_CLASS_A)sonido/sonido.h \
+$(DIR_CLASS_A)sonido/sonido.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_A)sonido/sonido.cpp -o $(DIR_O)sonido.o $(CLINK_A)
+
+################################################################################
+# INPUT 
+
+$(DIR_O)escritor_texto.o: \
+$(DIR_O)controles_sdl.o \
+$(DIR_CLASS_I)escritor_texto/escritor_texto.h \
+$(DIR_CLASS_I)escritor_texto/escritor_texto.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_I)escritor_texto/escritor_texto.cpp -o $(DIR_O)escritor_texto.o $(CLINK)
+
+$(DIR_O)controles_sdl.o: \
+$(DIR_CLASS_I)controles_sdl/controles_sdl.h \
+$(DIR_CLASS_I)controles_sdl/controles_sdl.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_I)controles_sdl/controles_sdl.cpp -o $(DIR_O)controles_sdl.o $(CLINK)
+
+################################################################################
+# HERRAMIENTAS
+
+$(DIR_O)hilo_sdl.o: \
+$(DIR_CLASS_H)hilo_sdl/hilo_sdl.h \
+$(DIR_CLASS_H)hilo_sdl/hilo_sdl.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_H)hilo_sdl/hilo_sdl.cpp -o $(DIR_O)hilo_sdl.o $(CLINK)
+
+$(DIR_O)linea.o: \
+$(DIR_CLASS_H)linea/linea.h \
+$(DIR_CLASS_H)linea/linea.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_H)linea/linea.cpp -o $(DIR_O)linea.o $(CLINK)
+
+$(DIR_O)punto_2d.o: \
+$(DIR_CLASS_H)punto_2d/punto_2d.h \
+$(DIR_CLASS_H)punto_2d/punto_2d.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_H)punto_2d/punto_2d.cpp -o $(DIR_O)punto_2d.o $(CLINK)
+
+$(DIR_O)vector_2d.o: \
+$(DIR_O)herramientas.o \
+$(DIR_CLASS_H)vector_2d/vector_2d.h \
+$(DIR_CLASS_H)vector_2d/vector_2d.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_H)vector_2d/vector_2d.cpp -o $(DIR_O)vector_2d.o $(CLINK)
+
+$(DIR_O)herramientas_sdl.o: \
+$(DIR_CLASS_H)herramientas_sdl/herramientas_sdl.h \
+$(DIR_CLASS_H)herramientas_sdl/herramientas_sdl.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_H)herramientas_sdl/herramientas_sdl.cpp -o $(DIR_O)herramientas_sdl.o $(CLINK)
+
+$(DIR_O)gestor_mapa_static.o: \
+$(DIR_CLASS_H)templates/gestor_mapa_static.h \
+$(DIR_CLASS_H)templates/gestor_mapa_static.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_H)templates/gestor_mapa_static.cpp -o $(DIR_O)gestor_mapa_static.o $(CLINK)
+
+$(DIR_O)gestor_mapa_instanciable.o: \
+$(DIR_CLASS_H)templates/gestor_mapa_instanciable.h \
+$(DIR_CLASS_H)templates/gestor_mapa_instanciable.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_H)templates/gestor_mapa_instanciable.cpp -o $(DIR_O)gestor_mapa_instanciable.o $(CLINK)
+
+$(DIR_O)gestor_vector_static.o: \
+$(DIR_CLASS_H)templates/gestor_vector_static.h \
+$(DIR_CLASS_H)templates/gestor_vector_static.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_H)templates/gestor_vector_static.cpp -o $(DIR_O)gestor_vector_static.o $(CLINK)
+
+$(DIR_O)gestor_vector_instanciable.o: \
+$(DIR_CLASS_H)templates/gestor_vector_instanciable.h \
+$(DIR_CLASS_H)templates/gestor_vector_instanciable.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_H)templates/gestor_vector_instanciable.cpp -o $(DIR_O)gestor_vector_instanciable.o $(CLINK)
+
+$(DIR_O)log_base.o: \
+$(DIR_CLASS_H)log_base/log_base.h \
+$(DIR_CLASS_H)log_base/log_base.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS_H)log_base/log_base.cpp -o $(DIR_O)log_base.o $(CLINK)
+
+$(DIR_O)localizador_base.o: \
+$(DIR_O)herramientas.o \
+$(DIR_CLASS_H)localizador_base/localizador_base.cpp \
+$(DIR_CLASS_H)localizador_base/localizador_base.h
+	$(CC) $(CFLAGS) $(DIR_CLASS_H)localizador_base/localizador_base.cpp -o $(DIR_O)localizador_base.o
+
+$(DIR_O)controlador_argumentos.o: \
+$(DIR_CLASS_H)controlador_argumentos/controlador_argumentos.cpp \
+$(DIR_CLASS_H)controlador_argumentos/controlador_argumentos.h
+	$(CC) $(CFLAGS) $(DIR_CLASS_H)controlador_argumentos/controlador_argumentos.cpp -o $(DIR_O)controlador_argumentos.o
+
+$(DIR_O)herramientas.o: \
+$(DIR_CLASS_H)herramientas/herramientas.cpp \
+$(DIR_CLASS_H)herramientas/herramientas.h
+	$(CC) $(CFLAGS) $(DIR_CLASS_H)herramientas/herramientas.cpp -o $(DIR_O)herramientas.o
+

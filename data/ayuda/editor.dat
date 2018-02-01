@@ -1,0 +1,412 @@
+CONTROLES GENERALES:
+
+F4 - SALIR.
+1 - EDITOR MAPA.
+2 - EDITOR PROPIEDADES NIVEL.
+3 - EDITOR TABLAS OBSTACULOS ALEATORIOS
+4 - EDITOR TABLAS BONUS ALEATORIOS
+5 - EDITOR TABLAS BONUS CAJA
+6 - EDITOR TABLAS BONUS OBSTACULOS
+7 - EDITOR DE ACCIONES
+8 - LISTADO DE ENTIDADES
+9 - MOSTRAR AYUDA
+
+CONTROLES POR SECCCION:
+
+** EDITOR MAPA *****************************************************************
+
+== MODO NORMAL ==
+
+F5 - Exportar captura de pantalla.
+
+  -- Ratón --
+
+[click izquierdo sobre actor] - Seleccionar actor.
+[LSHIFT + click izquierdo] - Añadir actor a selección múltiple.
+[LSHIFT + click derecho] - Iniciar (1) y finalizar (2) selección por región.
+
+  -- Sin actor seleccionado
+
+[pag. siguiente] - Escoger grupo actual.
+[pag. anterior] - Escoger grupo actual.
+[cursor izquierda / derecha] - Escoger tipo actor del grupo actual.
+[cursor arriba / abajo] - Desplazar cámara.
+
+  -- Con actor seleccionado --
+
+[pag. siguiente] - Escoger siguiente actor.
+[pag. anterior] - Escoger actor anterior.
+[cursores] - Desplazar selección.
+
+[p] - Pasar a edición de parámetros.
+[t] - Pasar a edición de tag.
+[c] - Pasar a "MODO REPRESENTACION FLEXIBLE".
+[x] - Pasar a "MODO TAMAÑO".
+[d] - Duplicar actor seleccionado.
+[v] - Descender profundidad.
+[b] - Aumentar profundidad.
+
+[r] - Duplicar selección múltiple en decoración de fondo.
+[y] - Duplicar selección múltiple en decoración de frente.
+
+[DEL] - Eliminar actor seleccionado.
+[ESC] - Cancelar selección simple.
+[m] - Cancelar selección múltiple.
+
+  -- Utilidades --
+
+[.] - Intercambiar tamaño de rejilla.
+[,] - Intercambiar tamaño de rejilla.
+[q] - Intercambiar filtro profundidad - fondo.
+[w] - Intercambiar filtro profundidad - normal.
+[e] - Intercambiar filtro profundidad - frente.
+[a] - Intercambiar mostrado de controles.
+[o] - Purgar duplicados.
+[g] - Intercambiar rejilla.
+[h] - Intercambiar bloqueo de rejilla.
+[k] - Intercambiar caja de info.
+[l] - Cargar nivel.
+[s] - Guardar nivel.
+[n] - Descartar nivel y crear nuevo.
+
+== MODO EDICIÓN DE TAG ==
+
+[0-9] Introducir tag.
+[Enter] Confirmar.
+
+== MODO EDICIÓN DE PARÁMETROS ==
+
+[Cursores arriba / abajo] Seleccionar parámetros.
+[Enter] Confirmar valor.
+[Resto] Introducir valor.
+
+== MODO FLEXIBLE ==
+
+[ESC] - Volver a modo normal.
+[pag. siguiente] - Escoger recurso.
+[pag. anterior] - Escoger recurso.
+[espacio] Reiniciar rectángulo de recorte de recurso.
+[cursores] Desplazar rectángulo de recorte de recurso.
+[wasd] Cambiar tamaño de rectángulo de recorte de recurso.
+[ftgh] Desplazar inicio del rectángulo de recorte de recurso (ajuste fino).
+
+== MODO TAMAÑO ==
+
+[ESC] - Volver a modo normal.
+[cursores] Cambiar tamaño.
+
+** EDITOR PROPIEDADES DE NIVEL *************************************************
+
+Desde este modo sólo es posible volver al modo de edición de mapa.
+
+Vector Y se refiere a la velocidad inicial del nivel. Puede modificarse en 
+niveles que no sean aleatorios mediante obstáculos del tipo "Propiedades de 
+nivel".
+
+Los valores "flags artefactos" deben expresarse en 0 o 1. Especifican los
+artefactos disponibles al inicio del nivel. En niveles preparados pueden 
+modificarse mediante obstáculos del tipo "Propiedades de nivel".
+
+Los valores para modo aleatorio sólo son aplicables en niveles que no tienen 
+actores.
+ 
+Todos los valores posibles son positivos: no es posible especificar un valor
+negativo.
+
+[ESC] - Volver a modo de edición de mapa.
+[cursores arriba / abajo] - Escoger propiedad a modificar.
+[ENTER] - Confirmar entrada.
+[Resto] - Escribir valor.
+
+** EDITOR TABLAS OBSTACULOS ALEATORIOS *****************************************
+** EDITOR TABLAS BONUS ALEATORIOS **********************************************
+** EDITOR TABLAS BONUS CAJA ****************************************************
+** EDITOR TABLAS BONUS OBSTACULOS **********************************************
+
+Las dos primeras tablas se aplican sólo a niveles aleatorios. Las dos últimas 
+se aplican a ambos. 
+
+Desde estos modos sólo es posible volver al modo de edición de nivel.
+
+Todos los valores se expresan en porcentajes y la suma de los mismos debe ser
+exactamente igual a 100. 
+
+Los bonus de "Caja" son aquellos que aparecen al destruir una caja de bonus. Los
+bonus de "Obstáculos" son aquellos que aparecen al destruir un asteroide.
+
+[ESC] - Volver a modo de edición de mapa.
+[cursores arriba / abajo] - Escoger propiedad a modificar.
+[ENTER] - Confirmar entrada.
+[0-9] - Escribir valor.
+
+** EDITOR DE ACCIONES **********************************************************
+
+[cursor izquierda/derecha] Seleccionar acción del listado.
+[cursor arriba/abajo] Cambiar propiedad a editar.
+[espacio - fuera de campo descripción] Crear nueva acción.
+[ENTER] Confimar propiedad
+[del] Borrar acción actual.
+[resto] Introducir valor propiedad.
+
+== DESCRIPCIÓN ==
+
+Las acciones son activadas por obstáculos de tipo trigger (por contacto, 
+automáticos, por recibir un disparo...) y efectúan un número limitado de 
+acciones que pueden afectar a actores o propiedades del nivel. Cada acción tiene
+un tag, que se usa en el trigger para determinar la acción a la que ese trigger
+llama.
+
+Una acción puede ir seguida de otra usando el campo "Tag siguiente" de forma
+que al finalizarse llame automáticamente a la siguiente.
+
+Supuestamente es posible tener dos acciones con el mismo tag que se activarán
+de forma simultánea con un trigger. Una misma acción puede ser llamada por
+varios triggers.
+
+== ACTORES Y TAGS ==
+
+Todos los actores pueden tener una "TAG" accesible desde el modo de edición de 
+tag. Esa tag permite que las acciones hagan referencia a los mismos. Muchos 
+actores pueden compartir la misma tag. La tag siempre indica una relación en 
+el sentido ACCION -> ACTOR (esta acción afecta al actor con esta tag).
+
+Los triggers pueden también tener una tag pero este no es el campo que se usa
+para indicar la acción a la que llaman: en su lugar se accede al editor de 
+propiedades y se indica la propiedad "tag". Esta propiedad indica una relación
+en el sentido TRIGGER -> ACCION (este trigger llama a la acción con esta tag).
+
+El esquema completo es
+
+TRIGGER [mediante propiedad tag llama a... ] 
+ACCION [mediante tag de actor afecta a... ]
+ACTOR.
+
+== CAMPOS ==
+
+Tipo: Determina el efecto de la acción. Más adelante se habla de cada uno de 
+ ellos en detalle.
+
+Descripción: Una breve descripción de texto que se usa como recordatorio de que
+ hace esta acción
+
+Tag: Para unir triggers con acciones según se explica anteriormente.
+
+Tag actores: Para indicar a qué actores afecta esta acción, según se explica
+ anteriormente.
+
+Tag actores secundario: Algunas acciones (ir a, punto ruta y asignar vector)
+pueden afectar a un actor con tag, pero necesitan obtener las propiedades de
+otros actores indicados por el tag secundario. Más adelante se explica en 
+detalle según cada acción.
+
+Tag siguiente: Al finalizar esta acción se iniciará la acción con la tag 
+ indicada aquí. El valor de cero se ignora, supuestamente. Para determinar 
+ cuando una acción finalizada se usan diversos criterios: por ejemplo, una 
+ acción de ruta queda finalizada cuando la ruta se completa del todo mientras
+ que una acción de "activar" un cañón queda finalizada de forma instantánea.
+
+Ms. Antes: Retraso en milisegundos que se aplica antes de iniciarse la acción.
+
+Ms. Después: Retraso en milisegundos que se aplica antes de iniciarse la acción
+ indicada por la tag siguiente, si la hubiere.
+
+Desplazamiento X / Y: Sólo para acciones del tipo ruta e ir a. Indican un 
+desplazamiento en píxeles a aplicar al actor afectado sobre el valor indicado
+por la tag de actores secundarios.
+
+== TIPOS DE ACCIONES ==
+
+0 - Activar
+1 - Desactivar
+2 - Intercambiar
+  Activan, desactivan o intercambian el estado de varios actores:
+  puertas remotas, cañones apuntados, giratorios y programables, 
+  generadores de decoración y generadores de obstáculos. 
+
+3 - Ruta
+  El tag segundario indica el primer punto de ruta a seguir por el actor
+  primario. Si hay puntos de ruta subsiguientes en la misma agrupación
+  de ruta, el actor los seguirá cuando haya llegado.
+
+4 - Fin ruta 
+  Indica que el actor de la tag primaria debe dejar de seguir la ruta que estaba
+  siguiente.
+
+5 - Ir a
+  Indica que el actor de la tag primaria debe desplazarse al punto de ruta 
+  indicado por la tag secundaria.
+
+6 - Fondo
+  La tag primaria debe apuntar a un obstáculo del tipo "Propiedades de fondo" e
+  indica que las propiedades deben aplicarse. Si la aplicación es paulatina la
+  acción no debería darse por finalizada hasta que todos los cambios sean 
+  aplicados.
+
+7 - Propiedades
+  La tag primaria debe apuntar a un obstáculo del tipo "Propiedades de nivel" e
+  indica que dichas propiedades deben aplicarse. Se aplican las mismas normas 
+  que en el tipo anterior.
+
+8 - Visible
+9 - Invisible
+10 - Intercambiar visible
+  Muestran o dejan de mostrar los actores indicados por la tag principal. Que un
+  actor no se muestre no indica que no esté ahí: seguirá siendo colisionable.
+
+11 - Vector
+  La tag primaria debe apuntar a un actor al que se le aplicará el vector 
+  especificado por el obstáculo del tipo "Propiedades Vector" especificado por
+  la tag secundaria.
+
+12 - Decoración
+  La tag primaria debe apuntar a un actor del tipo "Generador decoración" que
+  se activará al ser llamada la acción. Las decoraciones se generarán una sóla
+  vez en la posición del actor.
+
+== ACTORES DE ACTIVIDAD Y TRIGGERS:
+
+A continuación se resumen los propósitos y propiedades de los actores de 
+actividad y triggers cuyo funcionamiento puede resultar menos claro. Algunos
+actores quedan fuera de la lista por quedar su funcionamiento relativamente
+claro dentro del contexto del editor.
+
+- Propiedades de nivel: 
+  Este actor indica las propiedades que el nivel asumirá de ser activado. 
+  También se usa para indicar el fin de un nivel que no sea aleatorio. Para ser 
+  activado es necesario que sea llamada una acción del tipo "Propiedades" con la
+  tag principal enlazada a la tag de este actor. Sus propiedades son:
+
+    - Flags: artefactos que son usables a partir de la activación. Se suman
+        las flags de cada artefacto según se muestran en pantalla.
+
+    - Nueva velocidad: nuevo vector Y para el nivel.
+
+    - Velocidad cambio: cambio de velocidad por segundo, para un cambio gradual.
+        Se puede usar 0 para que sea un cambio instantáneo.
+
+    - Es fin nivel: Un valor de 1 finaliza el nivel tan pronto como el actor 
+        sea activado.
+
+- Propiedades de fondo:
+  Este actor indica los cambios que se producirán en el fondo de estrellas de
+  ser activado. Se siguen las mismas normas que en el caso anterio, sólo que
+  la acción debe ser del tipo "Propiedades fondo". Sus propiedades son:
+
+    - Rojo: Cantidad de rojo 0-255 en el color de fondo.
+    - Verde: Idem.
+    - Azul: Idem.
+    - Velocidad: Velocidad del cambio de color.
+    - Estrellas: Nueva cantidad de estrellas, entre 0 y 400. 401 para no 
+        cambiar el valor actual.
+
+- Puntos de ruta
+  Este actor indica un punto en pantalla hacia el que otro puede dirigirse. Los
+  puntos de ruta pueden encadenarse los unos a los otros para formar rutas 
+  complejas mediante las propiedades "Agrupación" e "Identificador". El tag de 
+  un punto de ruta sirve para identificarlo cuando una acción haga referencia
+  al mismo, mientras que el resto de propiedades sirven para determinar su 
+  comportamiento. El punto de ruta sirve para ser aplicado en las acciones del
+  tipo ruta, fin ruta e ir a.
+
+    - Agrupación: Un número que indica el grupo al que pertenece un punto de
+        si procede. Supuestamente debe tener algún valor cuando los puntos de 
+        ruta se encadenan los unos con los otros de forma que todos los puntos 
+        de la misma ruta tengan el mismo valor "agrupación". Supuestamente puede
+        dejarse a cero para puntos simples.
+    - Identificador: Dentro de una misma agrupación denota el identificador 
+        individual de un punto de ruta. Valor numérico.
+    - Siguiente: Al componer rutas complejas encadenando unos puntos con otros
+        de la misma agrupación se usa este valor para indicar qué punto va a
+        continuación del actual. El valor siguiente debe ser el "identificador"
+        del siguiente punto. Supuestamente es posible establecer rutas 
+        circulares encadenando el último nodo con el primero.
+    - Velocidad: La velocidad en píxeles por segundo a la que un actor se 
+        dirige al punto presente. Permite cambios de velocidad en rutas 
+        complejas.
+    - Instantáneo: Con un valor de 1 permite que el actor se sitúe 
+        inmediatamente en la posición del punto.
+
+- Propiedades de vector
+  Se usa para la acción del tipo "Vector", que aplica un vector de movimiento
+  a un actor. La tag primaria de la acción será el actor y la secundaria será
+  este actor, indicando las propiedades. Las propiedades X e Y indican el 
+  valor en positivo. Las propiedades X e Y negativo deben ser 0 o 1 en función 
+  de si el valor original debe ser positivo o negativo.
+
+- Trigger de contacto
+  Al tocarlo el jugador activará la acción apuntada por la propiedad TAG. Es
+  redimensionable. Ojo, la TAG propia no se usa para nada.
+    - Tag: Indica la tag de la acción a llamar.
+    - Repetible: Indica que este trigger puede activarse una sóla vez (0) o
+        un número indeterminado (1).
+    - Flags: Indica si se activa por el jugador (1), el fantasma (2) o 
+        cualquiera de los dos (3).
+
+- Trigger auto.
+  Idem que el anterior, pero se activa automáticamente al entrar en pantalla.
+  No cuenta con la propiedad de flags, sino con la propiedad "Encendido", que
+  se usa para activarlo o no. Puede iniciarse apagado y luego ser activado con
+  una acción del tipo "Activar" aplicado al mismo.
+
+- Trigger interruptor
+  Idem que el anterior, pero se activa al ser disparado. No tiene más 
+  propiedades que la tag de la acción y repetible.
+
+- Colocador de jugador
+  Sirve para probar los niveles: cuando se pone en alguna parte, el jugador se
+  coloca inmediatamente en su posición.
+
+- Actividad generador de obstáculos
+  Este obstáculo genera obstáculos del tipo "aleatorio" de forma automatica. Es
+  redimensionable. Sus propiedades son:
+    - Tipo obstáculo: 0-26x26, 1-32x64, 2-64x26, 3-128x32.
+    - Dimensión completa: (1-0) indica si el obstáculo se genera en un lugar
+        cualquiera del actor o en la esquina superior izquierda.
+    - Ángulo ini: (0-360) junto con ángulo fin define el arco en que se lanzarán
+        los obstáculos.
+    - Ángulo fin: Ver arriba.
+    - Tiempo descanso: Define el tiempo mínimo en milisegundos entre la 
+        aparición de dos obstáculos.
+    - Factor aleatorio: Define un tiempo aleatorio entre 0 y el valor (en 
+        milisegundos) que se sumará al tiempo de descanso.
+    - Multiplicador vector: El obstáculo se generará con un vector de velocidad
+        unidad. Se multiplicará por este valor.
+    - Encendido: Este actor puede activarse o desactivarse con una acción del 
+        tipo adecuado. Estando apagado no generará nuevos obstáculos.
+
+- Generador de decoraciones
+  Este actor genera decoraciones en la posición en la que se encuentre cuando
+  sea activado por medio de una acción del tipo "Decoración". Sus propiedades
+  indican las decoraciones que se generarán y son combinables entre si.
+    - Explosión: (0-1) si es 1 generará una explosión.
+    - Chispas: Cantidad de chispas a generar.
+    - Chatarra: Cantidad de chatarra a generar.
+
+- Actor disparador
+  El actor que dispara a la posición del jugador. En caso de ser parametrizado
+  funciona así:
+    - Tiempo total ms: Tiempo de descanso entre disparos.
+    - Resistencia: Por defecto 20, cantidad de resistencia del actor.
+    - Modo: 0 se comporta como en modo aleatorio (parado), 1 recibe un vector.
+    - Vector X e Y: en positivo, indican el vector de movimiento.
+    - Vector X e Y neg: (0-1) si vale 1 indica que el valor es negativo.
+    - Ruido puntería: Disminuye la precisión del disparo según aumenta.
+
+** LISTADO DE ENTIDADES ********************************************************
+
+Muestra un listado con todos los actores del mapa.
+
+[0-9] Cambiar de modo.
+[cursores arriba / abajo] Desplazar la ayuda una línea.
+[pag. siguiente / anterior] Desplazar la ayuda varias líneas.
+[espacio] Seleccionar actor y pasar a modo de edición de mapa.
+[del] Eliminar actor.
+[p] Exportar listado a fichero.
+
+** MOSTRAR AYUDA ***************************************************************
+
+[0-9] Cambiar de modo.
+[cursores arriba / abajo] Desplazar la ayuda una línea.
+[pag. siguiente / anterior] Desplazar la ayuda varias líneas.
+
+== FIN DEL DOCUMENTO ==

@@ -1,0 +1,99 @@
+Actor
+	-> Vector, posición, representación...
+	-> Tiene método de colisión con otro actor.
+
+	Actor Jugable
+		Fantasma
+		Jugador
+	No_jugador	-> Afectados por el divisor de movimiento.
+			-> Tienen turno
+			-> Comprueban si están fuera del mapa
+			-> Exige implementar si puede o no rebotar.
+			-> Indica si es afectado por el EDU.
+
+		Decoracion	-> No es colisionable, son explosiones, partículas y demás.
+			Explosion
+			Particulas							
+			Edu
+
+		Actor_mapa	-> Empieza en la parte superior.
+				-> Viene hacia el jugador. 
+				-> Cuando colisionan con él envian una señal de colisión.				
+				-> Determina si desaparece tras colisión.
+				-> Tienen el método "preparar actor" que es, prácticamente cósmico.
+				-> Básicamente casi todo lo que hay en el mapa.
+				-> El número entre corchetes indica el id del tipo.
+				-> Indica si tiene actividad.
+				-> Pueden colisionar con proyectiles.
+			Bonus
+				[10] Bonus_disparo
+				[11] Bonus_tiempo
+				[12] Bonus_vida
+				[13] Bonus_pimiento
+				[14] Bonus_normal
+			Obstaculo
+				[20] Obstaculo_26_26
+				[21] Obstaculo_32_64
+				[22] Obstaculo_64_26
+				[23] Obstaculo_128_30
+				[24] Obstaculo_800_32
+			[50] Proyectil_obstaculo
+			[30] Obstaculo_bonus
+			[31] Obstaculo_destruible
+			Obstaculo_actividad 	-> Puede llevar a cabo actividades sobre el resto. Creo que sobra porque no aporta nada.
+				[40] Obstaculo_gravedad
+				[41] Obstaculo_disparador				
+		Proyectil
+		Emisor_densidad_unificada
+
+Tabla_probabilidad_items
+Lector_puntuaciones
+Controlador
+Controlador_juego
+Campo_estrellas
+
+================================================================================
+
+Señales vs proyectil.
+
+1 obstaculo_*			-> Destruyen proyectil.
+	T_OBSTACULO_26_26
+	T_OBSTACULO_32_64
+	T_OBSTACULO_64_26
+	T_OBSTACULO_128_32
+	T_OBSTACULO_800_32
+
+2 bonus_normal			-> Se destruye sólo
+	T_BONUS_NORMAL
+
+3 obstaculo_destruible		-> Quita puntos vida a obstaculo.
+	T_OBSTACULO_DESTRUIBLE
+
+4 bonus_tiempo
+	T_BONUS_TIEMPO
+
+5 bonus_disparo
+	T_BONUS_DISPARO
+
+6 bonus_vida
+	T_BONUS_VIDA
+
+7 bonus_pimiento
+	T_BONUS_PIMIENTO
+
+8 obstaculo_bonus		-> Quita puntos vida a obstaculo.
+	T_OBSTACULO_BONUS
+
+================================================================================
+
+Señales vs jugador.
+
+1 obstaculo_*			-> Destruye jugador.
+	T_OBSTACULO_26_26
+	T_OBSTACULO_32_64
+	T_OBSTACULO_64_26
+	T_OBSTACULO_128_32
+	T_OBSTACULO_800_32
+
+2 bonus_normal			-> Da algún bonus.
+	T_BONUS_NORMAL

@@ -1,0 +1,519 @@
+<11$>ESC para salir.
+Todos los cambios tendrán efecto al salir 
+del menú de configuración.<#>
+<12$>Estás jugando con un perfil anónimo. Tus datos no se guardarán.<#>
+<13$>Bienvenid@ <#>
+<14$> - Puntuación conseguida finalizando el juego<#>
+<15$>PAUSADO<#>
+<16$>CARGANDO<#>
+<20$>No quedan vidas:
+G A M E  O V E R<#>
+<21$>Has perdido demasiadas gemas:
+G A M E  O V E R<#>
+<22$>Has finalizado el juego:
+Y O U  W I N<#>
+<25$>¡¡¡Nuevo record!!!. Escribe tu nombre.<#>
+<26$>Tu posición local: <#>
+<27$>Tu posición online: <#>
+<28$>Tutoriales activados<#>
+<29$>Tutoriales desactivados<#>
+<30$>¿Iniciar el nivel <#>
+<31$>?<#>
+<32$>Has encontrado un nivel secreto!.<#>
+
+#
+#Valores del menú principal
+#
+
+<40$>OFFLINE<#>
+<41$> ONLINE<#>
+<42$>INICIAR PARTIDA<#>
+<43$>CONTROLES<#>
+<44$>CONFIGURACIÓN<#>
+<45$>TUTORIALES ACTIVADOS<#>
+<46$>TUTORIALES DESACTIVADOS<#>
+<47$>AYUDA<#>
+<48$>SELECCIONAR NIVEL<#>
+<49$>VER RETOS<#>
+
+#
+#Pantalla de selección de nivel.
+#
+
+<100$>Nivel<#>
+<101$>Máxima puntuación<#>
+<102$>Veces iniciado<#>
+<103$>Vidas perdidas<#>
+<104$>Fecha de fin<#>
+<105$>Items<#>
+<106$>Destruidos<#>
+<107$>Sin finalizar<#>
+<150$>Puntuación obtenida:<#>
+<151$>Vidas perdidas:<#>
+<152$>Items recogidos:<#>
+<153$>Obstáculos destruidos:<#>
+<154$> finalizado<#>
+<154$>Nivel secreto localizado!!<#>
+
+#
+#Nombres de niveles
+#
+
+<200$>Tutorial<#>
+<201$>Nivel 2<#>
+<202$>Nivel 3<#>
+<203$>Nivel 4<#>
+<204$>Nivel 5<#>
+<205$>Nivel 6<#>
+<206$>Nivel 7<#>
+<207$>Nivel 8<#>
+<208$>Nivel 9<#>
+<209$>Nivel secreto 1<#>
+<210$>Nivel secreto 2<#>
+<211$>Nivel secreto 3<#>
+
+#
+#Valores de configuración de controles.
+#
+
+<400$>Configuración de controles<#>
+<401$>Pausar juego:
+Usar artefacto principal:
+Parar el tiempo:
+Siguiente artefacto:
+Artefacto anterior:
+Movimiento arriba:
+Movimiento derecha:
+Movimiento abajo:
+Movimiento izquierda:<#>
+<402$>Controles para teclado y ratón:<#>
+<403$>Controles para joystick:<#>
+<404$>Pulsa una tecla o botón de ratón o joystick. ESC para cancelar.<#>
+<405$>Usa los cursores para escoger un control. ENTER para cambiar,
+ESC para volver:<#>
+
+#
+#Valores de perfiles en el menú de perfiles.
+#
+
+<500$>BLAH BLAH BLAH BLAH BLAH BLAH...
+
+Un asterisco junto al nombre de perfil indica que la cuenta es 
+online y debes facilitar la clave para acceder.<#>
+<502$>Ha ocurrido un error al seleccionar el perfil.
+Intenta crear un perfil nuevo o continuar sin un perfil.<#>
+<503$>Se eliminará el perfil seleccionado!!!. Pulsa DEL para 
+confirmar o ESC para cancelar.<#>
+<504$>Ha ocurrido un error al eliminar el perfil. Por favor,
+reinicia el juego e inténtalo de nuevo..<#>
+
+<510$>Crear o importar un nuevo perfil (online o offline)
+<#>
+<511$>Cargar mi perfil online ya existente
+<#>
+<512$>Continuar sin un perfil
+<#>
+<520$>Usa el teclado para rellenar los datos. Si no deseas crear un 
+perfil online deja los campos de email y contraseña vacíos. Si vas a 
+crear una cuenta online, tu dirección de email sólo se usará para
+notificarte información importante acerca de tu cuenta. Podrás dar
+de baja tu cuenta online en cualquier momento.
+
+Si ya tienes una cuenta online rellena los campos con los datos de 
+tu cuenta y se importará automáticamente.
+
+Usa los cursores para cambiar el campo y pulsa ENTER para finalizar.<#>
+<521$>Se creará una cuenta con estos datos:
+<#>
+<522$>Pulsa ENTER para confirmar o ESCAPE para volver.<#>
+#
+#Errores al crear perfil...
+#
+<530$>Debes rellenar la menos el nombre de usuario. Para cuentas
+online debes rellenar también el email y contraseña.<#>
+<531$>El nombre de usuario que has introducido ya está en uso
+para un perfil offline en este ordenador. Por favor, escoge
+otro.<#>
+<532$>Has superado el límite máximo de perfiles habilitados para
+una misma cuenta de email. Por favor, accede a la web para
+liberar alguno de tus perfiles o usa otra cuenta de email.<#>
+<533$>Los datos introducidos para tu perfil son incorrectos. 
+Visita la web para restaurar los datos de acceso a tu cuenta.<#>
+<534$>Ha ocurrido un error al contactar con el servidor y no ha sido
+posible crear tu cuenta online. Asegúrate de tener una conexión a
+Internet e inténtalo de nuevo.<#>
+<535$>Aunque los datos de cuenta son correctos, las contraseñas no
+coinciden. Por favor, inténtalo de nuevo o visita la web para
+restaurar la contraseña de tu cuenta.<#>
+<536$>Por favor, asegúrate de que el nombre de tu perfil tiene al 
+menos cuatro caractéres.<#>
+<537$>Por favor, asegúrate de que tu email es correcto.<#>
+<538$>Por favor, asegúrate de que tu clave tiene al menos cuatro 
+caractéres.<#>
+<539$>Ha ocurrido un error en el servidor a la hora de crear
+tu perfil. Por favor, inténtalo de nuevo pasados unos minutos.<#>
+#
+#Nombres de los campos al crear perfiles...
+#
+<540$>Nombre de usuario: <#>
+<541$>Email (sólo online): <#>
+<542$>Contraseña (sólo online): <#>
+
+#
+#Resultados e infodel login...
+#
+<550$>Introduce la contraseña para tu cuenta.<#>
+<551$>Ha ocurrido un error al contectar con el servidor para validar
+tu cuenta. Por favor, comprueba que tienes una conexión a internet
+e inténtalo de nuevo.<#>
+<552$>La contraseña que has proporcionado no es correcta. Si has
+olvidado tu contraseña, por favor, visita la web para restaurarla.<#>
+<553$>No se ha encontrado ningún perfil online que coincida con 
+los datos almacenados en tu ordenador. Probablemente tu cuenta ha
+sido eliminada o has modificado sus datos desde la web.<#>
+
+<560$>No hay perfiles<#>
+<561$>Nuevo perfil<#>
+<562$>Continuar sin perfil<#>
+
+#
+#Valores de configuracion. 
+#
+<1000$>Método de control:<#>
+<1001$>Teclado y ratón<#>
+<1002$>Gamepad<#>
+<1010$>Puntuaciones online:<#>
+<1011$>Deshabilitadas<#>
+<1012$>Habilitadas<#>
+<1020$>Adaptador de video:<#>
+<1021$>Software<#>
+<1022$>Hardware<#>
+<1030$>Pantalla completa:<#>
+<1031$>No<#>
+<1032$>Si<#>
+<1040$>Volumen audio:<#>
+<1041$>Sin sonido<#>
+<1042$>Mínimo<#>
+<1043$>Bajo<#>
+<1044$>Medio<#>
+<1045$>Alto<#>
+<1046$>Máximo<#>
+<1050$>Volumen música:<#>
+<1060$>Idioma:<#>
+<1061$>Español<#>
+<1062$>Inglés<#>
+
+#
+#Títulos de los retos...
+#
+
+<2000$>Insistente<#>
+<2001$>Cheap Shooter<#>
+<2002$>Basurero espacial<#>
+<2003$>Buscador de tesoros<#>
+<2004$>Matemático<#>
+<2005$>Curva de aprendizaje<#>
+<2006$>Pacifista<#>
+<2007$>Carpe Diem<#>
+<2008$>Fantasma<#>
+<2009$>Abusón<#>
+<2010$>Buscaminas<#>
+<2011$>Asteroide secreto<#>
+<2012$>Niveles secretos<#>
+<2013$>Condecorado<#>
+<2014$>Al máximo<#>
+<2015$>Usurero<#>
+<2016$>High score<#>
+
+#
+#Textos de los retos...
+#
+
+################################
+#MAXIMA LONGITUD PERMITIDA PARA
+#EL TEXTO DE LOS RETOS
+DISPARA EL CAÑON N VECES_
+################################
+
+<2100$>Juega N partidas, de 
+principio a fín<#>
+<2101$>Dispara el cañón N veces 
+con tu perfil<#>
+<2102$>Acumula N obstáculos 
+destruidos con tu perfil<#>
+<2103$>Acumula N gemas recogidas 
+con tu perfil<#>
+<2104$>Consigue el combo máximo!<#>
+<2105$>Pierde N vidas<#>
+<2106$>Finaliza un nivel sin 
+usar el cañón<#>
+<2107$>Acumula más de N segundos de 
+tiempo detenido<#>
+<2108$>Acumula más de N metros de 
+teletransporte<#>
+<2109$>Acumula N unidades de 
+potencia de E.D.U. usadas<#>
+<2110$>Destruye N minas antes 
+de que exploten<#>
+<2111$>Destruye el asteroide 
+secreto<#>
+<2112$>Localiza todos los 
+niveles secretos<#>
+<2113$>Finaliza el juego<#>
+<2114$>Mejora al máximo el cañón<#>
+<2115$>Finaliza un nivel sin 
+dejar pasar ninguna gema<#>
+<2116$>Consigue más de N 
+puntos en una sóla partida!<#>
+
+#
+# INSTRUCCIONES
+#
+
+<3000$>Blah blah blah tracataca lalala burrurura<#>
+<3001$>Alea Iacta Est<#>
+<3002$>Una prueba por aquí, una prueba por allí, me
+gusta el rollo lalalala.<#>
+<3003$>Estoy en el bloco b, piso 1C. Tralaallala<#>
+<3004$>Una última línea para ir haciendo pruebas
+con más texto por aquí y por aquí.<#>
+
+#
+# TUTORIALES
+# Caben 40 por línea. 40 es hasta aquí:
+#***************************************
+#<xxxx$>***************************************
+
+<4000$>[Pulsa cualquier tecla o botón]<#>
+<4001$>Bienvenid@ a Cheap Shooter!!.
+
+Durante el primer nivel realizarás una 
+serie de tutoriales para hacerte con los 
+controles y objetivos del juego. 
+
+La información de estos tutoriales se 
+refiere siempre a los controles por 
+defecto. 
+
+Usa los cursores, pad direccional o 
+stick izquierdo para moverte. Si estás 
+usando un joystick o pad analógico, 
+mueve el stick más o menos a fondo para 
+mayor o menor velocidad.
+<#>
+
+<4002$>Navega hacia los items y tócalos para 
+recogerlos. Los items te otorgan 
+puntuación, vidas extra o mejoras para
+el Cheap Cruiser.
+
+Tu puntuación y tus vidas están en la
+esquina inferior izquierda.
+
+Chocarte con obstáculos te hará perder 
+una de tus vidas. Cuando no te queden, 
+la partida habrá finalizado.<#>
+
+<4003$>Deja pulsado el botón derecho del 
+ratón / L1 para detener el tiempo. Al 
+soltarlo el tiempo volverá a discurrir
+a la velocidad normal.
+
+La barra situada junto al Cheap Cruiser
+te indica la cantidad de energía que 
+tienes para usar esta habilidad. La 
+energía se recuperará si no la usas.
+
+Puedes moverte con normalidad mientras 
+esta habilidad se encuentra activa.<#>
+
+<4004$>El item situado a la izquierda aumenta
+la cantidad de energía disponible para
+detener el tiempo.
+
+Este y otros items tienen un máximo de 
+mejoras acumulables. Una vez superado
+el límite obtendrás puntos por cada 
+uno.<#>
+
+<4005$>A continuación, practicaremos el uso
+del cañón. Usa el ratón / stick derecho
+para apuntar. Deja pulsado el botón 
+izquierdo del ratón / R1 para cargar el
+cañón y suéltalo para disparar. 
+
+La segunda barra junto al Cheap Cruiser
+indica la energía del cañón.
+<#>
+
+<4006$>Muchos obstáculos son destruibles y 
+podrás obtener puntos e items por
+destruirlos. 
+
+Cuanto más tiempo cargues el cañón, más
+potente será el disparo resultante. 
+
+Dispara a los asteroides para practicar.<#>
+
+<4007$>Las cajas siempre tienen items en su
+interior, pero son muy resistentes.
+
+Esta caja contiene una mejora para el 
+cañón que aumenta la cantidad de energía 
+disponible.
+
+Puedes apuntar el cañón en cualquier 
+dirección, incluyendo hacia atrás.
+Recuerda que cuanto más tiempo cargues
+el cañón, más potente será el disparo.<#>
+
+<4008$>El número que aparece en la esquina
+superior derecha es el marcador de 
+combo.
+
+Destruye obstáculos para aumentar tu 
+marcador de combo y multiplicar los 
+puntos que obtengas. Cuanto mayor sea el 
+multiplicador, más obstaculos debes
+destruir para aumentar el marcador.
+
+Fallar un sólo disparo reiniciará el 
+combo.<#>
+
+<4009$>Las gemas verdes son tu principal 
+objetivo: siempre debes recoger una 
+cantidad mínima para finalizar el nivel
+y hay un límite de gemas que puedes dejar
+pasar.
+
+Las cifras izquierda y derecha junto al
+Cheap Cruiser indican respectivamente las
+cantidades para el nivel.
+
+Siempre puedes recoger más gemas de las
+necesarias, pero no podrás dejar pasar 
+más gemas de las permitidas.<#>
+
+<4010$>Junto a las puertas puedes ver un 
+interruptor. Dispara a los interruptores
+con el cañón para activar las puertas.
+
+Algunos interruptores te permiten 
+dispararles más de una vez para activar
+o desactivar las partes que controlan.<#>
+
+<4011$>Ahora practicaremos con el 
+teletransportador. Mantén pulsado el 
+botón izquierdo del ratón / R1 y usa los
+controles de movimiento para escoger un 
+destino. Suelta el botón izquierdo / R1 
+para teletransportarte. 
+
+Mientras estás escogiendo destino no 
+podrás mover el Cheap Cruiser!
+
+El teletransportador no se agota ni 
+necesita recargarse.
+<#>
+
+<4012$>No hay límite a la distancia a
+la que puedes usar el teletransportador.
+
+También puedes parar el tiempo y 
+activar el teletransportador para 
+conseguir algo de márgen en situaciones
+difíciles.<#>
+
+<4013$>El escudo te permite detener los 
+proyectiles pero no detendrá otros  
+obstáculos.
+
+Usa el ratón / stick derecho para 
+colocar el escudo y deja pulsado el 
+botón izquierdo del ratón / R1 para 
+activarlo. Suelta el botón para 
+desactivarlo.
+
+La barra inferior indica la carga 
+actual. El escudo se cargará cuando no
+lo estés usando.
+<#>
+
+<4014$>El item de la izquierda aumenta la 
+cantidad de carga del escudo. El item
+de la derecha aumenta su tamaño.
+
+Puedes combinar el escudo y parar el 
+tiempo para conseguir más márgen de 
+maniobra.<#>
+
+<4015$>A continuación aparecerán dos cañones
+de frente. 
+
+Practica activar y desactivar el escudo 
+en intervalos cortos para conservar 
+energía.<#>
+
+<4016$>El último artefacto es el Emisor de 
+Densidad Unificada. Al activarlo todos 
+los obstáculos alrededor del Cheap 
+Cruiser se alejarán con fuerza.
+
+La barra indica la cantidad de energía 
+disponible. Cada uso consume toda la 
+energía de la reserva.
+
+Pulsa el botón izquierdo del ratón / R1 
+para activar el Emisor de Densidad 
+Unificada.<#>
+
+<4017$>El Emisor de Densidad Unificada tendrá 
+menos fuerza cuando la carga no esté 
+completa.
+
+Asimismo, el artefacto no cambiará el 
+curso de los proyectiles ni la 
+arquitectura de los niveles.<#>
+
+<4018$>Usa las teclas Control derecho y Z /
+R2 y L2 para cambiar las habilidades.
+
+Detener el tiempo estará siempre 
+disponible pero tendrás que cambiar 
+entre las diferentes herramientas para
+progresar.
+<#>
+
+<4019$>No todas las habilidades estarán
+disponibles en todo momento pero siempre
+hay una solución para todas las 
+situaciones.
+
+A continuación pondrás en práctica 
+combinar las diferentes herramientas
+para finalizar el nivel.
+
+Antes la duda siempre puedes parar el 
+tiempo para conseguir más márgen!!.<#>
+
+<4020$>Encontrarás dos tipos de niveles en 
+Cheap Shooter: niveles como este que 
+estás jugando y niveles en los que los 
+obstáculos se generan aleatoriamente.
+
+Perder una vida en un nivel aleatorio no
+te hará reiniciarlo. Dejar pasar todas
+las gemas permitidas en un nivel 
+aleatorio causará inmediatamente el fin
+de la partida.
+
+El siguiente nivel es aleatorio: 
+recuerda coger todas las gemas que 
+necesites!!!.<#>
+
+<4021$>Con esto concluye el tutorial de Cheap
+Shooter. Este tutorial no volverá a 
+aparecer a no ser que lo reactives desde
+el menú principal.
+
+Mucha suerte!!.<#>

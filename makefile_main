@@ -1,0 +1,860 @@
+CFLAGS=-c -g -O0 -Wno-deprecated -Wall -ansi -pedantic -std=c++0x 
+CFLAGS_FINAL=-g -O0 -Wno-deprecated -Wall -ansi -pedantic -std=c++0x 
+CC=g++
+#-DLOG_BASE_SILENCIOSO=1
+DIR_CLASS=./class/aplicacion/
+DIR_HERRAMIENTAS=./class/herramientas/
+DIR_O=./objects/
+OBJETOS=$(DIR_O)bonus_tiempo.o \
+	$(DIR_O)bonus_pimiento.o \
+	$(DIR_O)bonus_normal.o \
+	$(DIR_O)bonus_componente_escudo.o \
+	$(DIR_O)bonus_carga_escudo.o \
+	$(DIR_O)bonus_disparo.o \
+	$(DIR_O)bonus_vida.o \
+	$(DIR_O)bonus.o \
+	$(DIR_O)lista_niveles.o \
+	$(DIR_O)receptor_trigger.o \
+	$(DIR_O)trigger.o \
+	$(DIR_O)accion_trigger.o \
+	$(DIR_O)accion_trigger_compuesta.o \
+	$(DIR_O)obstaculo_destruible.o \
+	$(DIR_O)obstaculo_destruible_secreto.o \
+	$(DIR_O)obstaculo_bonus.o \
+	$(DIR_O)obstaculo_800_32.o \
+	$(DIR_O)obstaculo_flexible.o \
+	$(DIR_O)obstaculo_aleatorio.o \
+	$(DIR_O)obstaculo_vector.o \
+	$(DIR_O)obstaculo_propiedades_movimiento_relativo.o \
+	$(DIR_O)obstaculo_generador_decoracion.o \
+	$(DIR_O)obstaculo_generador_obstaculos.o \
+	$(DIR_O)obstaculo_propiedades.o \
+	$(DIR_O)obstaculo_propiedades_fondo.o \
+	$(DIR_O)obstaculo_trigger_contacto.o \
+	$(DIR_O)obstaculo_trigger_interruptor.o \
+	$(DIR_O)obstaculo_trigger.o \
+	$(DIR_O)obstaculo_colocador_jugador.o \
+	$(DIR_O)trazador_fantasma.o \
+	$(DIR_O)trazador_explosion.o \
+	$(DIR_O)decoracion_nivel.o \
+	$(DIR_O)punto_ruta.o \
+	$(DIR_O)obstaculo.o \
+	$(DIR_O)proyectil.o \
+	$(DIR_O)fantasma.o \
+	$(DIR_O)jugador.o \
+	$(DIR_O)escudo.o \
+	$(DIR_O)escudo_parte.o \
+	$(DIR_O)mirilla.o \
+	$(DIR_O)visitante.o \
+	$(DIR_O)obstaculo_puerta_automatica.o \
+	$(DIR_O)obstaculo_puerta_remota.o \
+	$(DIR_O)obstaculo_puerta_disparar.o \
+	$(DIR_O)obstaculo_puerta.o \
+	$(DIR_O)obstaculo_canon_programable.o \
+	$(DIR_O)obstaculo_canon_giratorio.o \
+	$(DIR_O)obstaculo_canon_apuntado.o \
+	$(DIR_O)obstaculo_gravedad.o \
+	$(DIR_O)obstaculo_disparador.o \
+	$(DIR_O)boss.o \
+	$(DIR_O)boss_01.o \
+	$(DIR_O)boss_02.o \
+	$(DIR_O)obstaculo_explosivo.o \
+	$(DIR_O)obstaculo_trigger_auto.o \
+	$(DIR_O)obstaculo_actividad.o \
+	$(DIR_O)obstaculo_tutorial.o \
+	$(DIR_O)tutorial.o \
+	$(DIR_O)actor_mapa.o \
+	$(DIR_O)controlador_puntuacion.o \
+	$(DIR_O)decoracion_puntuacion.o \
+	$(DIR_O)decoracion_chispa.o \
+	$(DIR_O)decoracion_humo.o \
+	$(DIR_O)decoracion_fantasma.o \
+	$(DIR_O)decoracion_chatarra.o \
+	$(DIR_O)decoracion_explosion.o \
+	$(DIR_O)decoracion_edu.o \
+	$(DIR_O)decoracion.o \
+	$(DIR_O)no_jugador.o \
+	$(DIR_O)actor_jugable.o \
+	$(DIR_O)actor.o \
+	$(DIR_O)representable.o \
+	$(DIR_O)barra_combo.o \
+	$(DIR_O)barra_hud.o \
+	$(DIR_O)barra.o \
+	$(DIR_O)marcador_combo.o \
+	$(DIR_O)lector_puntuaciones.o \
+	$(DIR_O)controlador.o \
+	$(DIR_O)tabla_probabilidad.o \
+	$(DIR_O)controlador_juego.o \
+	$(DIR_O)controlador_editor.o \
+	$(DIR_O)configuracion.o \
+	$(DIR_O)item_configuracion.o \
+	$(DIR_O)configuracion_controles.o \
+	$(DIR_O)solicitud_curl.o \
+	$(DIR_O)localizador.o \
+	$(DIR_O)estructura_info_nivel.o \
+	$(DIR_O)controlador_perfiles.o \
+	$(DIR_O)estructura_datos_perfil.o \
+	$(DIR_O)perfil.o \
+	$(DIR_O)perfil_datos.o \
+	$(DIR_O)solicitud_servidor_perfil.o \
+	$(DIR_O)factoria_actores_mapa.o \
+	$(DIR_O)reto.o \
+	$(DIR_O)gestor_mapas_colision.o \
+	$(DIR_O)controlador_retos.o \
+	$(DIR_O)caja_texto.o \
+	$(DIR_O)hud_artefactos.o \
+	$(DIR_O)hud_decoracion.o \
+	$(DIR_O)campo_estrellas.o
+
+all: a.out 
+
+a.out: $(OBJETOS) \
+$(DIR_CLASS)definiciones/definiciones.h \
+main.cpp \
+libDanSDL.a 
+	$(CC) $(CFLAGS_FINAL) main.cpp $(OBJETOS) -o a.out -L. -lDanSDL -lSDL -lSDL_mixer -lSDL_image -lcurl
+
+$(DIR_O)controlador.o: \
+$(DIR_O)controlador_perfiles.o \
+$(DIR_O)perfil.o \
+$(DIR_O)perfil_datos.o \
+$(DIR_O)configuracion.o \
+$(DIR_O)item_configuracion.o \
+$(DIR_O)configuracion_controles.o \
+$(DIR_O)localizador.o \
+$(DIR_O)controlador_juego.o \
+$(DIR_O)controlador_editor.o \
+$(DIR_O)campo_estrellas.o \
+$(DIR_O)lector_puntuaciones.o \
+$(DIR_O)solicitud_curl.o \
+$(DIR_O)solicitud_servidor_perfil.o \
+$(DIR_O)reto.o \
+$(DIR_O)controlador_retos.o \
+$(DIR_O)configuracion_controles.o \
+$(DIR_CLASS)recursos/recursos.h \
+$(DIR_CLASS)definiciones/definicion_retos.h \
+$(DIR_CLASS)estructura_animacion_menu/estructura_animacion_menu.h \
+$(DIR_CLASS)estructura_instrucciones/estructura_instrucciones.h \
+$(DIR_CLASS)controlador/controlador.h \
+$(DIR_CLASS)controlador/controlador.cpp \
+$(DIR_CLASS)controlador/controlador.menu.cpp \
+$(DIR_CLASS)controlador/controlador.retos.cpp \
+$(DIR_CLASS)controlador/controlador.perfiles.cpp \
+$(DIR_CLASS)controlador/controlador.instrucciones.cpp \
+$(DIR_CLASS)controlador/controlador.config.cpp \
+$(DIR_CLASS)controlador/controlador.seleccion_nivel.cpp \
+$(DIR_CLASS)controlador/controlador.controles.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS)controlador/controlador.cpp -o $(DIR_O)controlador.o
+
+$(DIR_O)controlador_editor.o: \
+$(DIR_O)factoria_actores_mapa.o \
+$(DIR_O)accion_trigger.o \
+$(DIR_O)estructura_info_nivel.o \
+$(DIR_CLASS)actor_serializado/actor_serializado.h \
+$(DIR_CLASS)controlador_editor/controlador_editor.cpp \
+$(DIR_CLASS)controlador_editor/controlador_editor.representaciones.cpp \
+$(DIR_CLASS)controlador_editor/controlador_editor.controles.cpp \
+$(DIR_CLASS)controlador_editor/controlador_editor.io.cpp \
+$(DIR_CLASS)controlador_editor/controlador_editor.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)controlador_editor/controlador_editor.cpp -o $(DIR_O)controlador_editor.o
+
+$(DIR_O)controlador_juego.o: \
+$(DIR_O)tutorial.o \
+$(DIR_O)caja_texto.o \
+$(DIR_O)gestor_mapas_colision.o \
+$(DIR_O)configuracion_controles.o \
+$(DIR_O)estructura_info_nivel.o \
+$(DIR_O)controlador_perfiles.o \
+$(DIR_O)estructura_datos_perfil.o \
+$(DIR_O)localizador.o \
+$(DIR_O)campo_estrellas.o \
+$(DIR_O)jugador.o \
+$(DIR_O)trigger.o \
+$(DIR_O)escudo.o \
+$(DIR_O)lista_niveles.o \
+$(DIR_O)escudo_parte.o \
+$(DIR_O)fantasma.o \
+$(DIR_O)proyectil.o \
+$(DIR_O)factoria_actores_mapa.o \
+$(DIR_O)lector_puntuaciones.o \
+$(DIR_O)controlador_puntuacion.o \
+$(DIR_O)decoracion_puntuacion.o \
+$(DIR_O)decoracion_explosion.o \
+$(DIR_O)decoracion_chispa.o \
+$(DIR_O)decoracion_chatarra.o \
+$(DIR_O)decoracion_edu.o \
+$(DIR_O)decoracion_humo.o \
+$(DIR_O)decoracion_fantasma.o \
+$(DIR_O)decoracion.o \
+$(DIR_O)barra_hud.o \
+$(DIR_O)hud_artefactos.o \
+$(DIR_O)hud_decoracion.o \
+$(DIR_O)barra_combo.o \
+$(DIR_O)visitante.o \
+$(DIR_O)barra.o \
+$(DIR_O)marcador_combo.o \
+$(DIR_O)accion_trigger.o \
+$(DIR_O)trigger.o \
+$(DIR_CLASS)actor_serializado/actor_serializado.h \
+$(DIR_CLASS)definiciones/definiciones.h \
+$(DIR_CLASS)parametros_actor/parametros_actor.h \
+$(DIR_CLASS)controlador_juego/controlador_juego.cpp \
+$(DIR_CLASS)controlador_juego/controlador_juego.utils.cpp \
+$(DIR_CLASS)controlador_juego/controlador_juego.controles.cpp \
+$(DIR_CLASS)controlador_juego/controlador_juego.representaciones.cpp \
+$(DIR_CLASS)controlador_juego/controlador_juego.acciones.cpp \
+$(DIR_CLASS)controlador_juego/controlador_juego.actividades.cpp \
+$(DIR_CLASS)controlador_juego/controlador_juego.niveles.cpp \
+$(DIR_CLASS)controlador_juego/controlador_juego.loop.cpp \
+$(DIR_CLASS)controlador_juego/controlador_juego.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)controlador_juego/controlador_juego.cpp -o $(DIR_O)controlador_juego.o
+
+$(DIR_O)estructura_info_nivel.o :\
+$(DIR_O)tabla_probabilidad.o \
+$(DIR_O)accion_trigger_compuesta.o \
+$(DIR_CLASS)actor_serializado/actor_serializado.h \
+$(DIR_CLASS)definiciones/definiciones.h \
+$(DIR_CLASS)estructura_info_nivel/estructura_info_nivel.h \
+$(DIR_CLASS)estructura_info_nivel/estructura_info_nivel.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS)estructura_info_nivel/estructura_info_nivel.cpp -o $(DIR_O)estructura_info_nivel.o
+
+$(DIR_O)factoria_actores_mapa.o: \
+$(DIR_O)obstaculo.o \
+$(DIR_O)obstaculo_vector.o \
+$(DIR_O)obstaculo_propiedades_movimiento_relativo.o \
+$(DIR_O)obstaculo_generador_decoracion.o \
+$(DIR_O)obstaculo_generador_obstaculos.o \
+$(DIR_O)obstaculo_propiedades.o \
+$(DIR_O)obstaculo_propiedades_fondo.o \
+$(DIR_O)punto_ruta.o \
+$(DIR_O)obstaculo_trigger.o \
+$(DIR_O)obstaculo_trigger_contacto.o \
+$(DIR_O)obstaculo_trigger_interruptor.o \
+$(DIR_O)obstaculo_destruible.o \
+$(DIR_O)obstaculo_destruible_secreto.o \
+$(DIR_O)obstaculo_bonus.o \
+$(DIR_O)bonus_normal.o \
+$(DIR_O)bonus_vida.o \
+$(DIR_O)bonus_tiempo.o \
+$(DIR_O)bonus_pimiento.o \
+$(DIR_O)bonus_disparo.o \
+$(DIR_O)bonus_componente_escudo.o \
+$(DIR_O)bonus_carga_escudo.o \
+$(DIR_O)obstaculo_gravedad.o \
+$(DIR_O)obstaculo_canon_programable.o \
+$(DIR_O)obstaculo_canon_giratorio.o \
+$(DIR_O)obstaculo_canon_apuntado.o \
+$(DIR_O)obstaculo_puerta.o \
+$(DIR_O)obstaculo_colocador_jugador.o \
+$(DIR_O)trazador_fantasma.o \
+$(DIR_O)trazador_explosion.o \
+$(DIR_O)obstaculo_puerta_disparar.o \
+$(DIR_O)obstaculo_puerta_automatica.o \
+$(DIR_O)obstaculo_puerta_remota.o \
+$(DIR_O)obstaculo_disparador.o \
+$(DIR_O)boss_01.o \
+$(DIR_O)boss_02.o \
+$(DIR_O)obstaculo_tutorial.o \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_O)obstaculo_explosivo.o \
+$(DIR_O)obstaculo_trigger_auto.o \
+$(DIR_O)trigger.o \
+$(DIR_O)obstaculo_flexible.o \
+$(DIR_O)obstaculo_aleatorio.o \
+$(DIR_O)decoracion_nivel.o \
+$(DIR_CLASS)factorias/factoria_actores_mapa.cpp \
+$(DIR_CLASS)factorias/factoria_actores_mapa.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)factorias/factoria_actores_mapa.cpp -o $(DIR_O)factoria_actores_mapa.o
+
+$(DIR_O)bonus_vida.o: \
+$(DIR_O)bonus.o \
+$(DIR_CLASS)bonus/bonus_vida.cpp \
+$(DIR_CLASS)bonus/bonus_vida.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)bonus/bonus_vida.cpp -o $(DIR_O)bonus_vida.o
+
+$(DIR_O)bonus_tiempo.o: \
+$(DIR_O)bonus.o \
+$(DIR_CLASS)bonus/bonus_tiempo.cpp \
+$(DIR_CLASS)bonus/bonus_tiempo.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)bonus/bonus_tiempo.cpp -o $(DIR_O)bonus_tiempo.o
+
+$(DIR_O)bonus_pimiento.o: \
+$(DIR_O)bonus.o \
+$(DIR_CLASS)bonus/bonus_pimiento.cpp \
+$(DIR_CLASS)bonus/bonus_pimiento.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)bonus/bonus_pimiento.cpp -o $(DIR_O)bonus_pimiento.o
+
+$(DIR_O)bonus_normal.o: \
+$(DIR_O)bonus.o \
+$(DIR_CLASS)bonus/bonus_normal.cpp \
+$(DIR_CLASS)bonus/bonus_normal.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)bonus/bonus_normal.cpp -o $(DIR_O)bonus_normal.o
+
+$(DIR_O)bonus_componente_escudo.o: \
+$(DIR_O)bonus.o \
+$(DIR_CLASS)bonus/bonus_componente_escudo.cpp \
+$(DIR_CLASS)bonus/bonus_componente_escudo.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)bonus/bonus_componente_escudo.cpp -o $(DIR_O)bonus_componente_escudo.o
+
+$(DIR_O)bonus_carga_escudo.o: \
+$(DIR_O)bonus.o \
+$(DIR_CLASS)bonus/bonus_carga_escudo.cpp \
+$(DIR_CLASS)bonus/bonus_carga_escudo.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)bonus/bonus_carga_escudo.cpp -o $(DIR_O)bonus_carga_escudo.o
+
+$(DIR_O)bonus_disparo.o: \
+$(DIR_O)bonus.o \
+$(DIR_CLASS)bonus/bonus_disparo.cpp \
+$(DIR_CLASS)bonus/bonus_disparo.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)bonus/bonus_disparo.cpp -o $(DIR_O)bonus_disparo.o
+
+$(DIR_O)bonus.o: \
+$(DIR_O)actor_mapa.o \
+$(DIR_CLASS)bonus/bonus.cpp \
+$(DIR_CLASS)bonus/bonus.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)bonus/bonus.cpp -o $(DIR_O)bonus.o
+
+$(DIR_O)obstaculo_destruible_secreto.o: \
+$(DIR_O)obstaculo_destruible.o \
+$(DIR_CLASS)obstaculo_destruible_secreto/obstaculo_destruible_secreto.cpp \
+$(DIR_CLASS)obstaculo_destruible_secreto/obstaculo_destruible_secreto.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_destruible_secreto/obstaculo_destruible_secreto.cpp -o $(DIR_O)obstaculo_destruible_secreto.o
+
+$(DIR_O)obstaculo_destruible.o: \
+$(DIR_O)actor_mapa.o \
+$(DIR_CLASS)obstaculo_destruible/obstaculo_destruible.cpp \
+$(DIR_CLASS)obstaculo_destruible/obstaculo_destruible.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_destruible/obstaculo_destruible.cpp -o $(DIR_O)obstaculo_destruible.o
+
+$(DIR_O)obstaculo_bonus.o: \
+$(DIR_O)actor_mapa.o \
+$(DIR_CLASS)obstaculo_bonus/obstaculo_bonus.cpp \
+$(DIR_CLASS)obstaculo_bonus/obstaculo_bonus.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_bonus/obstaculo_bonus.cpp -o $(DIR_O)obstaculo_bonus.o
+
+$(DIR_O)obstaculo_trigger_interruptor.o: \
+$(DIR_O)obstaculo_trigger.o \
+$(DIR_CLASS)obstaculo_trigger/obstaculo_trigger_interruptor.cpp \
+$(DIR_CLASS)obstaculo_trigger/obstaculo_trigger_interruptor.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_trigger/obstaculo_trigger_interruptor.cpp -o $(DIR_O)obstaculo_trigger_interruptor.o
+
+$(DIR_O)obstaculo_trigger_contacto.o: \
+$(DIR_O)obstaculo_trigger.o \
+$(DIR_CLASS)obstaculo_trigger/obstaculo_trigger_contacto.cpp \
+$(DIR_CLASS)obstaculo_trigger/obstaculo_trigger_contacto.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_trigger/obstaculo_trigger_contacto.cpp -o $(DIR_O)obstaculo_trigger_contacto.o
+
+$(DIR_O)obstaculo_trigger.o: \
+$(DIR_O)obstaculo.o \
+$(DIR_CLASS)obstaculo_trigger/obstaculo_trigger.cpp \
+$(DIR_CLASS)obstaculo_trigger/obstaculo_trigger.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_trigger/obstaculo_trigger.cpp -o $(DIR_O)obstaculo_trigger.o
+
+$(DIR_O)punto_ruta.o: \
+$(DIR_CLASS)punto_ruta/punto_ruta.cpp \
+$(DIR_CLASS)punto_ruta/punto_ruta.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)punto_ruta/punto_ruta.cpp -o $(DIR_O)punto_ruta.o
+
+$(DIR_O)obstaculo_propiedades_fondo.o: \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_propiedades_fondo.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_propiedades_fondo.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_propiedades_fondo.cpp -o $(DIR_O)obstaculo_propiedades_fondo.o
+
+$(DIR_O)obstaculo_generador_obstaculos.o: \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_generador_obstaculos.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_generador_obstaculos.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_generador_obstaculos.cpp -o $(DIR_O)obstaculo_generador_obstaculos.o
+
+$(DIR_O)obstaculo_tutorial.o: \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_tutorial.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_tutorial.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_tutorial.cpp -o $(DIR_O)obstaculo_tutorial.o
+
+$(DIR_O)trazador_fantasma.o: \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/trazador_fantasma.cpp \
+$(DIR_CLASS)obstaculo_actividad/trazador_fantasma.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/trazador_fantasma.cpp -o $(DIR_O)trazador_fantasma.o
+
+$(DIR_O)trazador_explosion.o: \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/trazador_explosion.cpp \
+$(DIR_CLASS)obstaculo_actividad/trazador_explosion.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/trazador_explosion.cpp -o $(DIR_O)trazador_explosion.o
+
+$(DIR_O)obstaculo_colocador_jugador.o: \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_colocador_jugador.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_colocador_jugador.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_colocador_jugador.cpp -o $(DIR_O)obstaculo_colocador_jugador.o
+
+$(DIR_O)obstaculo_generador_decoracion.o: \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_generador_decoracion.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_generador_decoracion.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_generador_decoracion.cpp -o $(DIR_O)obstaculo_generador_decoracion.o
+
+$(DIR_O)obstaculo_propiedades_movimiento_relativo.o: \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_propiedades_movimiento_relativo.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_propiedades_movimiento_relativo.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_propiedades_movimiento_relativo.cpp -o $(DIR_O)obstaculo_propiedades_movimiento_relativo.o
+
+$(DIR_O)obstaculo_vector.o: \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_vector.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_vector.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_vector.cpp -o $(DIR_O)obstaculo_vector.o
+
+$(DIR_O)obstaculo_propiedades.o: \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_propiedades.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_propiedades.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_propiedades.cpp -o $(DIR_O)obstaculo_propiedades.o
+
+$(DIR_O)obstaculo_800_32.o: \
+$(DIR_O)obstaculo.o \
+$(DIR_CLASS)obstaculo/obstaculo_800_32.cpp \
+$(DIR_CLASS)obstaculo/obstaculo_800_32.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo/obstaculo_800_32.cpp -o $(DIR_O)obstaculo_800_32.o
+
+$(DIR_O)decoracion_nivel.o: \
+$(DIR_O)obstaculo.o \
+$(DIR_CLASS)decoracion_nivel/decoracion_nivel.cpp \
+$(DIR_CLASS)decoracion_nivel/decoracion_nivel.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)decoracion_nivel/decoracion_nivel.cpp -o $(DIR_O)decoracion_nivel.o
+
+$(DIR_O)obstaculo_aleatorio.o: \
+$(DIR_O)obstaculo.o \
+$(DIR_CLASS)obstaculo/obstaculo_aleatorio.cpp \
+$(DIR_CLASS)obstaculo/obstaculo_aleatorio.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo/obstaculo_aleatorio.cpp -o $(DIR_O)obstaculo_aleatorio.o
+
+$(DIR_O)obstaculo_flexible.o: \
+$(DIR_O)obstaculo.o \
+$(DIR_CLASS)obstaculo/obstaculo_flexible.cpp \
+$(DIR_CLASS)obstaculo/obstaculo_flexible.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo/obstaculo_flexible.cpp -o $(DIR_O)obstaculo_flexible.o
+
+$(DIR_O)obstaculo.o: \
+$(DIR_O)actor_mapa.o \
+$(DIR_CLASS)obstaculo/obstaculo.cpp \
+$(DIR_CLASS)obstaculo/obstaculo.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo/obstaculo.cpp -o $(DIR_O)obstaculo.o
+
+$(DIR_O)fantasma.o: \
+$(DIR_O)actor_jugable.o \
+$(DIR_CLASS)fantasma/fantasma.cpp \
+$(DIR_CLASS)fantasma/fantasma.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)fantasma/fantasma.cpp -o $(DIR_O)fantasma.o
+
+$(DIR_O)jugador.o: \
+$(DIR_O)actor_jugable.o \
+$(DIR_CLASS)definiciones/definiciones.h \
+$(DIR_CLASS)jugador/jugador.cpp \
+$(DIR_CLASS)jugador/jugador.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)jugador/jugador.cpp -o $(DIR_O)jugador.o
+
+$(DIR_O)escudo.o: \
+$(DIR_O)escudo_parte.o \
+$(DIR_CLASS)escudo/escudo.cpp \
+$(DIR_CLASS)escudo/escudo.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)escudo/escudo.cpp -o $(DIR_O)escudo.o
+
+$(DIR_O)escudo_parte.o: \
+$(DIR_O)actor.o \
+$(DIR_CLASS)escudo_parte/escudo_parte.cpp \
+$(DIR_CLASS)escudo_parte/escudo_parte.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)escudo_parte/escudo_parte.cpp -o $(DIR_O)escudo_parte.o
+
+$(DIR_O)obstaculo_puerta_remota.o: \
+$(DIR_O)obstaculo_puerta.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_puerta_remota.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_puerta_remota.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_puerta_remota.cpp -o $(DIR_O)obstaculo_puerta_remota.o
+
+
+$(DIR_O)obstaculo_puerta_automatica.o: \
+$(DIR_O)obstaculo_puerta.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_puerta_automatica.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_puerta_automatica.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_puerta_automatica.cpp -o $(DIR_O)obstaculo_puerta_automatica.o
+
+$(DIR_O)obstaculo_puerta_disparar.o: \
+$(DIR_O)obstaculo_puerta.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_puerta_disparar.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_puerta_disparar.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_puerta_disparar.cpp -o $(DIR_O)obstaculo_puerta_disparar.o
+
+$(DIR_O)obstaculo_puerta.o: \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_puerta.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_puerta.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_puerta.cpp -o $(DIR_O)obstaculo_puerta.o
+
+$(DIR_O)obstaculo_canon_apuntado.o: \
+$(DIR_O)proyectil.o \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_canon_apuntado.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_canon_apuntado.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_canon_apuntado.cpp -o $(DIR_O)obstaculo_canon_apuntado.o
+
+$(DIR_O)obstaculo_canon_giratorio.o: \
+$(DIR_O)proyectil.o \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_canon_giratorio.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_canon_giratorio.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_canon_giratorio.cpp -o $(DIR_O)obstaculo_canon_giratorio.o
+
+$(DIR_O)obstaculo_canon_programable.o: \
+$(DIR_O)proyectil.o \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_canon_programable.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_canon_programable.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_canon_programable.cpp -o $(DIR_O)obstaculo_canon_programable.o
+
+$(DIR_O)obstaculo_gravedad.o: \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_gravedad.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_gravedad.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_gravedad.cpp -o $(DIR_O)obstaculo_gravedad.o
+
+$(DIR_O)boss_02.o: \
+$(DIR_O)boss.o \
+$(DIR_CLASS)boss/boss_02.cpp \
+$(DIR_CLASS)boss/boss_02.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)boss/boss_02.cpp -o $(DIR_O)boss_02.o
+
+$(DIR_O)boss_01.o: \
+$(DIR_O)boss.o \
+$(DIR_CLASS)boss/boss_01.cpp \
+$(DIR_CLASS)boss/boss_01.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)boss/boss_01.cpp -o $(DIR_O)boss_01.o
+
+$(DIR_O)boss.o: \
+$(DIR_O)proyectil.o \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)boss/boss.cpp \
+$(DIR_CLASS)boss/boss.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)boss/boss.cpp -o $(DIR_O)boss.o
+
+$(DIR_O)obstaculo_disparador.o: \
+$(DIR_O)proyectil.o \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_disparador.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_disparador.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_disparador.cpp -o $(DIR_O)obstaculo_disparador.o
+
+$(DIR_O)obstaculo_explosivo.o: \
+$(DIR_O)proyectil.o \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_explosivo.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_explosivo.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_explosivo.cpp -o $(DIR_O)obstaculo_explosivo.o
+
+$(DIR_O)obstaculo_trigger_auto.o: \
+$(DIR_O)trigger.o \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_trigger_auto.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_trigger_auto.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_trigger_auto.cpp -o $(DIR_O)obstaculo_trigger_auto.o
+
+$(DIR_O)visitante.o: \
+$(DIR_O)obstaculo_actividad.o \
+$(DIR_CLASS)visitante/visitante.cpp \
+$(DIR_CLASS)visitante/visitante.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)visitante/visitante.cpp -o $(DIR_O)visitante.o
+
+$(DIR_O)obstaculo_actividad.o: \
+$(DIR_O)actor_mapa.o \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_actividad.cpp \
+$(DIR_CLASS)obstaculo_actividad/obstaculo_actividad.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)obstaculo_actividad/obstaculo_actividad.cpp -o $(DIR_O)obstaculo_actividad.o
+
+$(DIR_O)actor_mapa.o: \
+$(DIR_O)no_jugador.o \
+$(DIR_O)proyectil.o \
+$(DIR_O)receptor_trigger.o \
+$(DIR_O)accion_trigger_datos.o \
+$(DIR_CLASS)actor_mapa/actor_mapa.cpp \
+$(DIR_CLASS)actor_mapa/actor_mapa.h \
+$(DIR_CLASS)parametros_actor/parametros_actor.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)actor_mapa/actor_mapa.cpp -o $(DIR_O)actor_mapa.o
+
+$(DIR_O)proyectil.o: \
+$(DIR_O)no_jugador.o \
+$(DIR_CLASS)proyectil/proyectil.cpp \
+$(DIR_CLASS)proyectil/proyectil.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)proyectil/proyectil.cpp -o $(DIR_O)proyectil.o
+
+$(DIR_O)controlador_puntuacion.o: \
+$(DIR_O)decoracion_puntuacion.o \
+$(DIR_CLASS)controlador_puntuacion/controlador_puntuacion.cpp \
+$(DIR_CLASS)controlador_puntuacion/controlador_puntuacion.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)controlador_puntuacion/controlador_puntuacion.cpp -o $(DIR_O)controlador_puntuacion.o
+
+$(DIR_O)decoracion_puntuacion.o: \
+$(DIR_O)decoracion.o \
+$(DIR_CLASS)decoracion/decoracion_puntuacion.cpp \
+$(DIR_CLASS)decoracion/decoracion_puntuacion.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)decoracion/decoracion_puntuacion.cpp -o $(DIR_O)decoracion_puntuacion.o
+
+$(DIR_O)decoracion_chispa.o: \
+$(DIR_O)decoracion.o \
+$(DIR_CLASS)decoracion/decoracion_chispa.cpp \
+$(DIR_CLASS)decoracion/decoracion_chispa.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)decoracion/decoracion_chispa.cpp -o $(DIR_O)decoracion_chispa.o
+
+$(DIR_O)decoracion_edu.o: \
+$(DIR_O)decoracion.o \
+$(DIR_CLASS)decoracion/decoracion_edu.cpp \
+$(DIR_CLASS)decoracion/decoracion_edu.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)decoracion/decoracion_edu.cpp -o $(DIR_O)decoracion_edu.o
+
+$(DIR_O)decoracion_fantasma.o: \
+$(DIR_O)decoracion.o \
+$(DIR_CLASS)decoracion/decoracion_fantasma.cpp \
+$(DIR_CLASS)decoracion/decoracion_fantasma.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)decoracion/decoracion_fantasma.cpp -o $(DIR_O)decoracion_fantasma.o
+
+$(DIR_O)decoracion_humo.o: \
+$(DIR_O)decoracion.o \
+$(DIR_CLASS)decoracion/decoracion_humo.cpp \
+$(DIR_CLASS)decoracion/decoracion_humo.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)decoracion/decoracion_humo.cpp -o $(DIR_O)decoracion_humo.o
+
+
+$(DIR_O)decoracion_chatarra.o: \
+$(DIR_O)decoracion.o \
+$(DIR_CLASS)decoracion/decoracion_chatarra.cpp \
+$(DIR_CLASS)decoracion/decoracion_chatarra.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)decoracion/decoracion_chatarra.cpp -o $(DIR_O)decoracion_chatarra.o
+
+$(DIR_O)decoracion_explosion.o: \
+$(DIR_O)decoracion.o \
+$(DIR_CLASS)decoracion/decoracion_explosion.cpp \
+$(DIR_CLASS)decoracion/decoracion_explosion.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)decoracion/decoracion_explosion.cpp -o $(DIR_O)decoracion_explosion.o
+
+$(DIR_O)decoracion.o: \
+$(DIR_O)no_jugador.o \
+$(DIR_CLASS)decoracion/decoracion.cpp \
+$(DIR_CLASS)decoracion/decoracion.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)decoracion/decoracion.cpp -o $(DIR_O)decoracion.o
+
+$(DIR_O)no_jugador.o: \
+$(DIR_O)actor.o \
+$(DIR_O)representable.o \
+$(DIR_CLASS)definiciones/definiciones.h \
+$(DIR_CLASS)no_jugador/no_jugador.cpp \
+$(DIR_CLASS)no_jugador/no_jugador.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)no_jugador/no_jugador.cpp -o $(DIR_O)no_jugador.o
+
+$(DIR_O)mirilla.o: \
+$(DIR_O)actor_jugable.o \
+$(DIR_CLASS)mirilla/mirilla.cpp \
+$(DIR_CLASS)mirilla/mirilla.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)mirilla/mirilla.cpp -o $(DIR_O)mirilla.o
+
+$(DIR_O)actor_jugable.o: \
+$(DIR_O)actor.o \
+$(DIR_O)representable.o \
+$(DIR_CLASS)actor_jugable/actor_jugable.cpp \
+$(DIR_CLASS)actor_jugable/actor_jugable.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)actor_jugable/actor_jugable.cpp -o $(DIR_O)actor_jugable.o
+
+$(DIR_O)actor.o: \
+$(DIR_O)gestor_mapas_colision.o \
+$(DIR_CLASS)actor/actor.cpp \
+$(DIR_CLASS)actor/actor.h \
+$(DIR_CLASS)definiciones/definiciones.h \
+$(DIR_CLASS)recursos/recursos.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)actor/actor.cpp -o $(DIR_O)actor.o
+
+$(DIR_O)representable.o: \
+$(DIR_CLASS)representable/representable.cpp \
+$(DIR_CLASS)representable/representable.h \
+$(DIR_CLASS)recursos/recursos.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)representable/representable.cpp -o $(DIR_O)representable.o
+
+$(DIR_O)tabla_probabilidad.o: \
+$(DIR_CLASS)tabla_probabilidad/tabla_probabilidad.h \
+$(DIR_CLASS)tabla_probabilidad/tabla_probabilidad.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS)tabla_probabilidad/tabla_probabilidad.cpp -o $(DIR_O)tabla_probabilidad.o
+
+$(DIR_O)accion_trigger_compuesta.o: \
+$(DIR_O)accion_trigger.o \
+$(DIR_O)trigger.o \
+$(DIR_O)accion_trigger_datos.o \
+$(DIR_CLASS)accion_trigger_compuesta/accion_trigger_compuesta.h \
+$(DIR_CLASS)accion_trigger_compuesta/accion_trigger_compuesta.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS)accion_trigger_compuesta/accion_trigger_compuesta.cpp -o $(DIR_O)accion_trigger_compuesta.o
+
+$(DIR_O)accion_trigger_datos.o: \
+$(DIR_CLASS)accion_trigger_datos/accion_trigger_datos.h \
+$(DIR_CLASS)accion_trigger_datos/accion_trigger_datos.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS)accion_trigger_datos/accion_trigger_datos.cpp -o $(DIR_O)accion_trigger_datos.o
+
+$(DIR_O)lector_puntuaciones.o: \
+$(DIR_O)solicitud_curl.o \
+$(DIR_CLASS)lector_puntuaciones/lector_puntuaciones.cpp \
+$(DIR_CLASS)lector_puntuaciones/lector_puntuaciones.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)lector_puntuaciones/lector_puntuaciones.cpp -o $(DIR_O)lector_puntuaciones.o
+
+$(DIR_O)campo_estrellas.o: \
+$(DIR_CLASS)campo_estrellas/campo_estrellas.cpp \
+$(DIR_CLASS)campo_estrellas/campo_estrellas.h \
+$(DIR_CLASS)definiciones/definiciones.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)campo_estrellas/campo_estrellas.cpp -o $(DIR_O)campo_estrellas.o
+
+$(DIR_O)marcador_combo.o: \
+$(DIR_CLASS)marcador_combo/marcador_combo.cpp \
+$(DIR_CLASS)marcador_combo/marcador_combo.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)marcador_combo/marcador_combo.cpp -o $(DIR_O)marcador_combo.o
+
+$(DIR_O)barra_hud.o: \
+$(DIR_O)barra.o \
+$(DIR_CLASS)barra_hud/barra_hud.cpp \
+$(DIR_CLASS)barra_hud/barra_hud.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)barra_hud/barra_hud.cpp -o $(DIR_O)barra_hud.o
+
+$(DIR_O)barra_combo.o: \
+$(DIR_O)barra.o \
+$(DIR_CLASS)barra_combo/barra_combo.cpp \
+$(DIR_CLASS)barra_combo/barra_combo.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)barra_combo/barra_combo.cpp -o $(DIR_O)barra_combo.o
+
+$(DIR_O)barra.o: \
+$(DIR_CLASS)barra/barra.cpp \
+$(DIR_CLASS)barra/barra.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)barra/barra.cpp -o $(DIR_O)barra.o
+
+$(DIR_O)item_configuracion.o: \
+$(DIR_CLASS)item_configuracion/item_configuracion.cpp \
+$(DIR_CLASS)item_configuracion/item_configuracion.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)item_configuracion/item_configuracion.cpp -o $(DIR_O)item_configuracion.o
+
+$(DIR_O)configuracion.o: \
+$(DIR_CLASS)configuracion/configuracion.cpp \
+$(DIR_CLASS)configuracion/configuracion.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)configuracion/configuracion.cpp -o $(DIR_O)configuracion.o
+
+$(DIR_O)configuracion_controles.o: \
+$(DIR_CLASS)configuracion_controles/configuracion_controles.cpp \
+$(DIR_CLASS)configuracion_controles/configuracion_controles.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)configuracion_controles/configuracion_controles.cpp -o $(DIR_O)configuracion_controles.o
+
+$(DIR_O)localizador.o: \
+$(DIR_CLASS)localizador/localizador.cpp \
+$(DIR_CLASS)localizador/localizador.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)localizador/localizador.cpp -o $(DIR_O)localizador.o
+
+
+$(DIR_O)controlador_perfiles.o: \
+$(DIR_O)perfil.o \
+$(DIR_O)perfil_datos.o \
+$(DIR_O)estructura_datos_perfil.o \
+$(DIR_O)controlador_retos.o \
+$(DIR_CLASS)controlador_perfiles/controlador_perfiles.cpp \
+$(DIR_CLASS)controlador_perfiles/controlador_perfiles.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)controlador_perfiles/controlador_perfiles.cpp -o $(DIR_O)controlador_perfiles.o
+
+$(DIR_O)solicitud_servidor_perfil.o: \
+$(DIR_O)solicitud_curl.o \
+$(DIR_CLASS)definiciones/definicion_retos.h \
+$(DIR_CLASS)solicitud_servidor_perfil/solicitud_servidor_perfil.cpp \
+$(DIR_CLASS)solicitud_servidor_perfil/solicitud_servidor_perfil.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)solicitud_servidor_perfil/solicitud_servidor_perfil.cpp -o $(DIR_O)solicitud_servidor_perfil.o
+
+$(DIR_O)perfil.o: \
+$(DIR_O)perfil_datos.o \
+$(DIR_CLASS)perfil/perfil.cpp \
+$(DIR_CLASS)perfil/perfil.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)perfil/perfil.cpp -o $(DIR_O)perfil.o
+
+$(DIR_O)controlador_retos.o: \
+$(DIR_O)reto.o \
+$(DIR_O)perfil_datos.o \
+$(DIR_O)localizador.o \
+$(DIR_CLASS)definiciones/definicion_retos.h \
+$(DIR_CLASS)controlador_retos/controlador_retos.cpp \
+$(DIR_CLASS)controlador_retos/controlador_retos.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)controlador_retos/controlador_retos.cpp -o $(DIR_O)controlador_retos.o
+
+$(DIR_O)perfil_datos.o: \
+$(DIR_O)reto.o \
+$(DIR_O)estructura_datos_perfil.o \
+$(DIR_CLASS)perfil_datos/perfil_datos.cpp \
+$(DIR_CLASS)perfil_datos/perfil_datos.h \
+$(DIR_CLASS)definiciones/definicion_retos.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)perfil_datos/perfil_datos.cpp -o $(DIR_O)perfil_datos.o
+
+$(DIR_O)reto.o: \
+$(DIR_CLASS)reto/reto.cpp \
+$(DIR_CLASS)reto/reto.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)reto/reto.cpp -o $(DIR_O)reto.o
+
+$(DIR_O)estructura_datos_perfil.o: \
+$(DIR_CLASS)estructura_datos_perfil/estructura_datos_perfil.cpp \
+$(DIR_CLASS)estructura_datos_perfil/estructura_datos_perfil.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)estructura_datos_perfil/estructura_datos_perfil.cpp -o $(DIR_O)estructura_datos_perfil.o
+
+$(DIR_O)gestor_mapas_colision.o: \
+$(DIR_CLASS)recursos/recursos.h \
+$(DIR_CLASS)gestor_mapas_colision/gestor_mapas_colision.cpp \
+$(DIR_CLASS)gestor_mapas_colision/gestor_mapas_colision.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)gestor_mapas_colision/gestor_mapas_colision.cpp -o $(DIR_O)gestor_mapas_colision.o
+
+$(DIR_O)receptor_trigger.o: \
+$(DIR_O)accion_trigger.o \
+$(DIR_CLASS)receptor_trigger/receptor_trigger.cpp \
+$(DIR_CLASS)receptor_trigger/receptor_trigger.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)receptor_trigger/receptor_trigger.cpp -o $(DIR_O)receptor_trigger.o
+
+$(DIR_O)accion_trigger.o: \
+$(DIR_O)trigger.o \
+$(DIR_CLASS)accion_trigger/accion_trigger.cpp \
+$(DIR_CLASS)accion_trigger/accion_trigger.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)accion_trigger/accion_trigger.cpp -o $(DIR_O)accion_trigger.o
+
+$(DIR_O)trigger.o: \
+$(DIR_CLASS)trigger/trigger.cpp \
+$(DIR_CLASS)trigger/trigger.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)trigger/trigger.cpp -o $(DIR_O)trigger.o
+
+$(DIR_O)lista_niveles.o: \
+$(DIR_CLASS)lista_niveles/lista_niveles.cpp \
+$(DIR_CLASS)lista_niveles/lista_niveles.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)lista_niveles/lista_niveles.cpp -o $(DIR_O)lista_niveles.o
+
+$(DIR_O)tutorial.o: \
+$(DIR_O)caja_texto.o \
+$(DIR_CLASS)tutorial/tutorial.cpp \
+$(DIR_CLASS)tutorial/tutorial.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)tutorial/tutorial.cpp -o $(DIR_O)tutorial.o
+
+$(DIR_O)caja_texto.o: \
+$(DIR_CLASS)caja_texto/caja_texto.cpp \
+$(DIR_CLASS)caja_texto/caja_texto.h
+	$(CC) $(CFLAGS) $(DIR_CLASS)caja_texto/caja_texto.cpp -o $(DIR_O)caja_texto.o
+
+$(DIR_O)hud_artefactos.o :\
+$(DIR_CLASS)definiciones/definiciones.h \
+$(DIR_CLASS)hud_artefactos/hud_artefactos.h \
+$(DIR_CLASS)hud_artefactos/hud_artefactos.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS)hud_artefactos/hud_artefactos.cpp -o $(DIR_O)hud_artefactos.o
+
+$(DIR_O)hud_decoracion.o :\
+$(DIR_CLASS)hud_decoracion/hud_decoracion.h \
+$(DIR_CLASS)hud_decoracion/hud_decoracion.cpp
+	$(CC) $(CFLAGS) $(DIR_CLASS)hud_decoracion/hud_decoracion.cpp -o $(DIR_O)hud_decoracion.o
+
+###### ESTO ES FUERA DEL PROYECTO ##############################################
+
+$(DIR_O)solicitud_curl.o: \
+$(DIR_HERRAMIENTAS)solicitud_curl/solicitud_curl.cpp \
+$(DIR_HERRAMIENTAS)solicitud_curl/solicitud_curl.h
+	$(CC) $(CFLAGS) $(DIR_HERRAMIENTAS)solicitud_curl/solicitud_curl.cpp -o $(DIR_O)solicitud_curl.o

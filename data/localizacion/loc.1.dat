@@ -1,0 +1,45 @@
+<10$>FIRE to start.
+C for configuration.
+ESC to exit.
+<#>
+<11$>ESC to exit.
+Video changes will take place upon restarting the game.
+Audio changes will take place upon exiting configuration.<#>
+<15$>PAUSE<#>
+<20$>No lives left:
+G A M E  O V E R<#>
+<21$>Too many gems skipped:
+G A M E  O V E R<#>
+<22$>Has finalizado el juego:
+Y O U  W I N<#>
+<25$>¡¡¡New record!!!. Enter your name.<#>
+<26$>Local position: <#>
+<27$>Online position: <#>
+<30$>Start level <#>
+<31$>?<#>
+#
+#Valores de configuracion. 
+#
+<1000$>Control method:<#>
+<1001$>Keyboard + Mouse<#>
+<1002$>Gamepad<#>
+<1010$>Online leaderboards:<#>
+<1011$>Disabled<#>
+<1012$>Enabled<#>
+<1020$>Video adapter:<#>
+<1021$>Software<#>
+<1022$>Hardware<#>
+<1030$>Fullscreen:<#>
+<1031$>No<#>
+<1032$>Yes<#>
+<1040$>Audio volume:<#>
+<1041$>No sound<#>
+<1042$>Minimum<#>
+<1043$>Kow<#>
+<1044$>Medium<#>
+<1045$>High<#>
+<1046$>Maximum<#>
+<1050$>Music volume:<#>
+<1060$>Language:<#>
+<1061$>Spanish<#>
+<1062$>English<#>
