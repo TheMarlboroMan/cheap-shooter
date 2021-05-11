@@ -1,5 +1,5 @@
 
-/*Si un no jugador tiene una actividad se procesa aquí como un 
+/*Si un no jugador tiene una actividad se procesa aquí como un
 "obstaculo_actividad".* La actuación puede darse sobre el resto de actores
 y puede también emitir un sonido.
 
@@ -20,27 +20,27 @@ void Controlador_juego::procesar_turno_actividad_no_jugador(Obstaculo_actividad 
 	}
 }
 
-/*Esto no llama a ningún método el obstáculo en si: es distinto al resto. 
+/*Esto no llama a ningún método el obstáculo en si: es distinto al resto.
 El funcionamiento implica coger todos los actores y proyectiles y acercarlos
 a su posición, como un pozo de gravedad.*/
 
 unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_gravedad &p_trasto)
 {
 	//Este es el único estado en el que permitimos que ocurra algo.
-	if(!estado_actual==E_JUEGO) return 0;
+	if(estado_actual != E_JUEGO) return 0;
 
 	std::vector<Actor_mapa*>::iterator 	ini=this->actores_mapa.begin(),
 						fin=this->actores_mapa.end();
 
 	std::vector<Proyectil*>::iterator 	ini_pr=this->proyectiles.begin(),
 						fin_pr=this->proyectiles.end();
-	
+
 	while(ini < fin)
 	{
 		if((*ini)->es_afectado_por_edu() && (*ini)!=&p_trasto)
 		{
 			(*ini)->sumar_vector((*ini)->obtener_vector_unidad_hasta_actor(p_trasto ), 0.5);
-		}			
+		}
 
 		ini++;
 	};
@@ -50,14 +50,14 @@ unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_gravedad &p_trast
 		(*ini_pr)->sumar_vector((*ini_pr)->obtener_vector_unidad_hasta_actor(p_trasto ), 0.5);
 		ini_pr++;
 	};
-	
+
 	return p_trasto.actuar_sonido();
 }
 
 unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_explosivo &p_mina)
 {
 	//Este es el único estado en el que permitimos que ocurra algo.
-	if(!estado_actual==E_JUEGO) return 0;
+	if(estado_actual!=E_JUEGO) return 0;
 
 	Proyectil * pr=NULL;
 	pr=p_mina.explotar();
@@ -67,13 +67,13 @@ unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_explosivo &p_mina
 	//Si no devuelve un proyectil es que aún ha terminado el ciclo de explosión.
 	if(!pr)
 	{
-		this->generar_explosion(&p_mina, false, 3);	
+		this->generar_explosion(&p_mina, false, 3);
 		resultado=p_mina.actuar_sonido();
 		p_mina.marcar_para_borrar();
 	}
 	//Si lo devuelve entonces aún podemos disparar un poco más.
 	else
-	{		
+	{
 		this->proyectiles.push_back(pr);
 		resultado=p_mina.actuar_sonido();
 	}
@@ -116,11 +116,11 @@ unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_propiedades &p_ob
 {
 	if(!p_obstaculo.es_usado())
 	{
-		LOG<<"INICIANDO OBSTACULO ACTIVIDAD NIVEL"<<std::endl;	
-	
+		LOG<<"INICIANDO OBSTACULO ACTIVIDAD NIVEL"<<std::endl;
+
 		p_obstaculo.usar();
 
-		if(p_obstaculo.es_marca_fin_nivel()) 
+		if(p_obstaculo.es_marca_fin_nivel())
 		{
 			LOG<<"HABILITANDO FIN DE NIVEL"<<std::endl;
 			this->estructura_info_nivel.habilitar_comprobacion_finalizacion_nivel_preparado();
@@ -134,7 +134,7 @@ unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_propiedades &p_ob
 
 		establecer_artefacto_jugador_auto();
 
-	
+
 	/*Es posible que ahora estemos usando o cargando un artefacto que ya
 	no podríamos usar: por ejemplo, el fantasma o el cañón. Si ya no se
 	puede usar y lo estamos usando vamos a anularlos.*/
@@ -144,7 +144,7 @@ unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_propiedades &p_ob
 		{
 			this->forzar_fin_fantasma();
 		}
-	
+
 		//La carga del cañón podría quedarse pillada.
 		if(!estructura_info_nivel.es_artefacto_permitido(Definiciones::A_CANON))
 		{
@@ -159,13 +159,13 @@ unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_canon_programable
 {
 	Proyectil * pr=NULL;
 	pr=p_canon.disparar();
-	
-	if(pr) 
+
+	if(pr)
 	{
 		this->proyectiles.push_back(pr);
 		return p_canon.actuar_sonido();
 	}
-	else 
+	else
 	{
 		return 0;
 	}
@@ -174,17 +174,17 @@ unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_canon_programable
 unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_canon_apuntado &p_canon)
 {
 	//Este es el único estado en el que permitimos que ocurra algo.
-	if(!estado_actual==E_JUEGO) return 0;
+	if(estado_actual!=E_JUEGO) return 0;
 
 	Proyectil * pr=NULL;
 	pr=p_canon.disparar(*this->J);
-	
-	if(pr) 
+
+	if(pr)
 	{
 		this->proyectiles.push_back(pr);
 		return p_canon.actuar_sonido();
 	}
-	else 
+	else
 	{
 		return 0;
 	}
@@ -201,13 +201,13 @@ unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_canon_giratorio &
 	while(canon_actual < cantidad_canones)
 	{
 		pr=p_canon.disparar(canon_actual);
-	
-		if(pr) 
+
+		if(pr)
 		{
 			this->proyectiles.push_back(pr);
 			resultado=p_canon.actuar_sonido();
 		}
-		else 
+		else
 		{
 			return 0;
 		}
@@ -221,17 +221,17 @@ unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_canon_giratorio &
 unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_disparador &p_disparador)
 {
 	//Este es el único estado en el que permitimos que ocurra algo.
-	if(!estado_actual==E_JUEGO) return 0;
+	if(estado_actual!=E_JUEGO) return 0;
 
 	Proyectil * pr=NULL;
 	pr=p_disparador.disparar(*this->J);
-	
-	if(pr) 
+
+	if(pr)
 	{
 		this->proyectiles.push_back(pr);
 		return p_disparador.actuar_sonido();
 	}
-	else 
+	else
 	{
 		return 0;
 	}
@@ -306,7 +306,7 @@ unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_trigger_auto &p_t
 
 /*Muestra un tutorial. Hay un número limitado y estático de cadenas que pueden
 mostrarse en el tutorial y desde aquí las estamos mostrando todas. Aunque los
-valores del enum son correlativos tampoco es esto tan crítico como para 
+valores del enum son correlativos tampoco es esto tan crítico como para
 calcularlo con offset y está bien claro así.*/
 
 unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_tutorial &p_obstaculo)
@@ -315,7 +315,7 @@ unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_tutorial &p_obsta
 	if(estado_actual!=E_JUEGO) return 0;
 
 	p_obstaculo.usar();
-	
+
 	if(controlador_perfiles.es_mostrar_tutoriales())
 	{
 		std::string cadena;
@@ -348,7 +348,7 @@ unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_tutorial &p_obsta
 		tutorial=Tutorial(cadena, localizador.obtener(Localizador::C_TUTORIAL_ESPERANDO_INPUT), p_obstaculo.acc_ms_tiempo(), 255.0f);
 //		tutorial=Tutorial(cadena, localizador.obtener(Localizador::C_TUTORIAL_ESPERANDO_INPUT), 100.0f, 255.0f);
 		tutorial.activar();
-	
+
 		if(p_obstaculo.es_finaliza_tutoriales())
 		{
 			LOG<<"DESACTIVANDO TUTORIALES EN PERFIL..."<<std::endl;
@@ -381,12 +381,12 @@ unsigned int Controlador_juego::actividad_no_jugador(Obstaculo_colocador_jugador
 unsigned int Controlador_juego::actividad_no_jugador(Trazador_fantasma &t)
 {
 	//Este es el único estado en el que permitimos que ocurra algo.
-	if(!estado_actual==E_JUEGO) return 0;
+	if(estado_actual!=E_JUEGO) return 0;
 
 	Decoracion_chispa * ch=NULL;
 	DLibH::Vector_2d v(0, 0);
 	float d=(1000+(rand()%2000)) / 1000;
-		
+
 	ch=new Decoracion_chispa(t.acc_x_centro(), t.acc_y_centro(), Decoracion_chispa::ROJOS);
 	v*=100.0f+rand()%100;
 	v.x=( (rand()%10)-5 ) * 5.0f;
@@ -440,7 +440,7 @@ unsigned int Controlador_juego::actividad_no_jugador(Boss_01 &b)
 	//Echar humo si procede.
 	if(b.puede_generar_decoraciones())
 	{
-		std::vector<Boss::Estructura_decoracion_boss> generados=b.obtener_decoraciones();	
+		std::vector<Boss::Estructura_decoracion_boss> generados=b.obtener_decoraciones();
 		for(Boss::Estructura_decoracion_boss & d : generados)
 			generar_decoracion_desde_estructura_boss(d);
 
@@ -451,7 +451,7 @@ unsigned int Controlador_juego::actividad_no_jugador(Boss_01 &b)
 	if(b.es_preparado_para_lanzar_trigger())
 	{
 		this->activar_accion_trigger(b);
-		b.finalizar_estado_trigger();		
+		b.finalizar_estado_trigger();
 	}
 
 	if(b.es_preparado_para_hacer_explosion())
@@ -473,7 +473,7 @@ unsigned int Controlador_juego::actividad_no_jugador(Boss_02 &b)
 	{
 		if(!estructura_info_nivel.acc_vector_y())
 		{
-			b.iniciar_batalla();	
+			b.iniciar_batalla();
 		}
 	}
 	//Cuando la batalla se haya iniciado entonces pueden ocurrir varias cosas...
@@ -492,7 +492,7 @@ unsigned int Controlador_juego::actividad_no_jugador(Boss_02 &b)
 		if(b.es_preparado_para_lanzar_trigger())
 		{
 			this->activar_accion_trigger(b);
-			b.finalizar_estado_trigger();		
+			b.finalizar_estado_trigger();
 		}
 
 		//Realizar explosión...
@@ -503,7 +503,7 @@ unsigned int Controlador_juego::actividad_no_jugador(Boss_02 &b)
 
 			//TODO: Si está reproduciendo algo, detenerlo.
 
-//			if(b.obtener_canal_sonido_canon_izq()) 
+//			if(b.obtener_canal_sonido_canon_izq())
 //			{
 //				controlador_audio.detener_sonido(b.obtener_canal_sonido_canon_izq());
 //				b.liberar_canal_sonido_canon_izq();
@@ -526,10 +526,10 @@ unsigned int Controlador_juego::actividad_no_jugador(Boss_02 &b)
 		//Echar humo si procede.
 		if(b.puede_generar_decoraciones())
 		{
-			std::vector<Boss::Estructura_decoracion_boss> generados=b.obtener_decoraciones();	
+			std::vector<Boss::Estructura_decoracion_boss> generados=b.obtener_decoraciones();
 			for(Boss::Estructura_decoracion_boss & d : generados)
 				generar_decoracion_desde_estructura_boss(d);
-	
+
 			b.vaciar_decoraciones();
 		}
 
@@ -553,7 +553,7 @@ unsigned int Controlador_juego::actividad_no_jugador(Boss_02 &b)
 		{
 			controlador_audio.detener_sonido(b.obtener_canal_sonido_canon_izq());
 			b.liberar_canal_sonido_canon_izq();
-		}		
+		}
 
 		//TODO: Controlar destrucción de canón y detener sonido!.
 */

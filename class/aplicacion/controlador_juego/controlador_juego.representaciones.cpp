@@ -18,7 +18,7 @@ void Controlador_juego::representar(float p_delta)
 		case E_FINALIZANDO_NIVEL:
 		case E_PREPARANDO_JUGADOR_INICIAR_NIVEL:
 
-			this->representar_entidades_mapa_fondo();			
+			this->representar_entidades_mapa_fondo();
 			this->representar_entidades_jugador();
 			this->representar_entidades_mapa_frente();
 			this->representar_entidades_jugador_frente();
@@ -28,7 +28,7 @@ void Controlador_juego::representar(float p_delta)
 		break;
 
 		case E_ANIMACION_FIN_JUEGO:
-			this->representar_entidades_mapa_fondo();			
+			this->representar_entidades_mapa_fondo();
 			this->representar_entidades_jugador(true);
 			this->representar_entidades_mapa_frente();
 		break;
@@ -71,7 +71,7 @@ void Controlador_juego::representar(float p_delta)
 			{ //Guardia para errores de cross-initialization.
 				this->tiempo_cargando+=p_delta;
 				float v=this->tiempo_cargando*100;
-				this->rep_txt_cargando->ref_recurso()->establecer_alpha((int) v % 255);	
+				this->rep_txt_cargando->ref_recurso()->establecer_alpha((int) v % 255);
 				this->rep_txt_cargando->volcar(pantalla);
 			}
 		break;
@@ -84,7 +84,7 @@ void Controlador_juego::representar(float p_delta)
 	if(this->pausado && this->estado_actual != E_FINALIZANDO_LOOP_PRINCIPAL)
 	{
 		float v=this->tiempo_pausa*100;
-		this->rep_txt_pausa->ref_recurso()->establecer_alpha((int) v % 255);	
+		this->rep_txt_pausa->ref_recurso()->establecer_alpha((int) v % 255);
 		this->rep_txt_pausa->volcar(pantalla);
 	}
 
@@ -95,6 +95,7 @@ void Controlador_juego::representar(float p_delta)
 	}
 
 	//Control de frames...
+/*
 	std::string c1("");
 
 	c1=DLibH::Herramientas::entero_a_cadena(J->acc_x())+
@@ -115,8 +116,9 @@ void Controlador_juego::representar(float p_delta)
 	this->rep_fps.volcar(pantalla);
 
 	//El log consume bastantes FPS, pero es temporal :).
-	LOG_G.procesar();	
+	LOG_G.procesar();
 	LOG_G.acc_representacion().volcar(pantalla);
+*/
 
 	//Trofeos...
 
@@ -125,7 +127,7 @@ void Controlador_juego::representar(float p_delta)
 	if(r)
 	{
 		r->acc_representacion()->volcar(pantalla);
-	}	
+	}
 
 	//Por si los hubiera...
 	this->pantalla.procesar_procesos(p_delta);
@@ -147,7 +149,7 @@ void Controlador_juego::representar_mirilla()
 					this->M->establecer_estado_disparo(J->es_canon_usable());
 					this->M->acc_representacion()->volcar(pantalla, this->camara);
 				break;
-	
+
 				case C_GAMEPAD:
 					if(this->M->es_activa_gamepad()) this->representar_puntero_gamepad(J->es_canon_usable());
 				break;
@@ -171,7 +173,7 @@ void Controlador_juego::representar_mirilla()
 void Controlador_juego::representar_entidades_jugador(bool solo_jugador)
 {
 	if(!solo_jugador)
-	{		
+	{
 		//Artefactos mostrables...
 		if(this->J->acc_artefacto_actual()==Definiciones::A_ESCUDO)
 		{
@@ -197,7 +199,7 @@ void Controlador_juego::representar_entidades_jugador_frente()
 	}
 }
 
-/*Método auxiliar: si jugamos con gamepad el puntero se representa como una 
+/*Método auxiliar: si jugamos con gamepad el puntero se representa como una
 línea. EL parámetro es para ver el color que vamos a usar en la línea.
 Teniendo en cuenta que la línea del gamepad es una representación estática
 vamos a ajustar la posiciones para compensar los niveles preparados (que tienen
@@ -236,7 +238,7 @@ void Controlador_juego::representar_puntero_gamepad(bool preparado)
 		defy=py1 > py2 ? -599 : 0;
 	}
 	else
-	{	
+	{
 		/*En este punto vamos a buscar la intersección de nuestra
 		línea con los límites de la pantalla por ambos lados (arriba/abajo
 		e izquierda/derecha). La línea más corta de las dos
@@ -295,14 +297,14 @@ void Controlador_juego::representar_entidades_mapa_fondo()
 		}
 	};
 
-	/*Por el tema de que los actores de mapa pueden estar representados en 
+	/*Por el tema de que los actores de mapa pueden estar representados en
 	varias capas tenemos que hacer aquí un arreglo... Recorreremos todos
 	los actores de mapa y meteremos en un vector a aquellos que quedarían
 	dentro de lo mostrable. Luego ordenaremos ese vector por la pronfundidad
 	y lo iremos lanzando.
-	
+
 	Cuando vayan a ser dibujados se comprobará de nuevo si quedan dentro
-	de los límites, pero creo que no hace un impacto en el rendimiento.*/	
+	de los límites, pero creo que no hace un impacto en el rendimiento.*/
 
 	//Primero lo limpiamos...
 	this->actores_mapa_representables.clear();
@@ -310,7 +312,7 @@ void Controlador_juego::representar_entidades_mapa_fondo()
 	//Si hay algo en el mapa...
 	if(this->actores_mapa.size())
 	{
-		for_each(this->actores_mapa.begin(), this->actores_mapa.end(), comprobar_mostrable_y_volcar);		
+		for_each(this->actores_mapa.begin(), this->actores_mapa.end(), comprobar_mostrable_y_volcar);
 
 		if(this->actores_mapa_representables.size())
 		{
@@ -319,20 +321,20 @@ void Controlador_juego::representar_entidades_mapa_fondo()
 			if(this->estructura_info_nivel.acc_modo_juego()==Estructura_info_nivel::M_PREPARADO)
 			{
 				Ordenador_actor_mapa_por_profundidad ord;
-				sort(this->actores_mapa_representables.begin(), 
+				sort(this->actores_mapa_representables.begin(),
 					this->actores_mapa_representables.end(),
 					ord);
 			}
 
-			//Apuntamos el iterador. Hay un iterador porque 
-			//aquí vamos a dibujar sólo dos bloques: el fondo y 
+			//Apuntamos el iterador. Hay un iterador porque
+			//aquí vamos a dibujar sólo dos bloques: el fondo y
 			//el normal. Cuando hayamos dibujado al jugador
 			//podremos añadir el frente.
 
 			it_actores_mapa_representables=this->actores_mapa_representables.begin();
 			auto it_actores_mapa_representables_fin=this->actores_mapa_representables.end();
 
-			while(it_actores_mapa_representables < it_actores_mapa_representables_fin 
+			while(it_actores_mapa_representables < it_actores_mapa_representables_fin
 				&& (*it_actores_mapa_representables)->acc_profundidad_representacion()!=Actor_mapa::P_FRENTE)
 			{
 				(* it_actores_mapa_representables)->acc_representacion()->volcar(pantalla, this->camara);
@@ -345,7 +347,7 @@ void Controlador_juego::representar_entidades_mapa_fondo()
 	{
 		std::vector<Proyectil*>::iterator 	ini_pr=this->proyectiles.begin(),
 							fin_pr=this->proyectiles.end();
-		for(;ini_pr < fin_pr; ini_pr++) 
+		for(;ini_pr < fin_pr; ini_pr++)
 			comprobar_y_volcar(* static_cast<Representable *> ((*ini_pr)));
 	}
 
@@ -353,7 +355,7 @@ void Controlador_juego::representar_entidades_mapa_fondo()
 	{
 		std::vector<Decoracion*>::iterator 	ini_dc=this->decoraciones.begin(),
 							fin_dc=this->decoraciones.end();
-		for(;ini_dc < fin_dc; ini_dc++) 
+		for(;ini_dc < fin_dc; ini_dc++)
 			comprobar_y_volcar(* static_cast<Representable *> ((*ini_dc)));
 	}
 }
@@ -396,10 +398,10 @@ void Controlador_juego::representar_hud(bool solo_vidas)
 
 	if(!solo_vidas)
 	{
-		const unsigned int espacio_extra=2; 
+		const unsigned int espacio_extra=2;
 		int hud_x=this->J->acc_x()+this->J->acc_posicion().w+espacio_extra;
 
-		//Ojo, en modo "No preparado" esa distancia valdrá cero :). 
+		//Ojo, en modo "No preparado" esa distancia valdrá cero :).
 		int dist=camara.acc_caja().y;
 		int hud_y=this->J->acc_y()+10-dist;
 
@@ -414,7 +416,7 @@ void Controlador_juego::representar_hud(bool solo_vidas)
 		{
 			this->rep_txt_gemas_nivel->establecer_posicion(hud_x, hud_y);
 			this->rep_txt_gemas_nivel->volcar(pantalla);
-		}	
+		}
 
 		hud_y+=10;
 
@@ -462,12 +464,12 @@ void Controlador_juego::representar_hud(bool solo_vidas)
 	unsigned int puntuacion_representada=this->CONTROLADOR_PUNTUACION.acc_puntuacion_representada();
 	this->rep_txt_puntuacion->asignar(DLibH::Herramientas::entero_a_cadena(puntuacion_representada));
 	this->rep_txt_vidas->asignar(DLibH::Herramientas::entero_a_cadena(this->J->acc_vidas()));
-	
+
 	this->rep_txt_puntuacion->volcar(pantalla);
 	this->rep_txt_vidas->volcar(pantalla);
 
 	//Cuando estamos iniciando un nuevo nivel se muestran las estadísticas del nivel anterior.
-	if(this->estado_actual==E_PREPARANDO_JUGADOR_INICIAR_NIVEL) 
+	if(this->estado_actual==E_PREPARANDO_JUGADOR_INICIAR_NIVEL)
 	{
 		rep_caja_fondo_fin_nivel->volcar(pantalla);
 		rep_fin_nivel->volcar(pantalla);

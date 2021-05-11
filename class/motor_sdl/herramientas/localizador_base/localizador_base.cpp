@@ -41,14 +41,18 @@ t_cadena Localizador_base::generar_nombre_archivo(t_cadena const& p_original)
 
 void Localizador_base::inicializar()
 {
+std::cout<<"will find list"<<std::endl;
+
 	t_lista_nombres_archivo lista=this->obtener_lista_archivos();
 	t_lista_nombres_archivo::iterator ini=lista.begin(), fin=lista.end();
 
 	//Limpiar mapa e ir asignando.
+std::cout<<"will cleanup"<<std::endl;
 	this->limpiar_cadenas();
 
 	for(;ini<fin; ini++)
 	{
+std::cout<<"will process file "<<*ini<<std::endl;
 		this->procesar_fichero(*ini);
 	}
 
@@ -79,14 +83,15 @@ void Localizador_base::procesar_fichero(t_cadena const& nombre_archivo)
 			else if(buffer[0]=='#') continue;	//Es un comentario????
 
 			//Delimitador de inicio encontrado?
-		
+
 			indice_aux=this->delimitador_inicio_en_cadena(cadena);
 
 			if(indice_aux!=-1)
 			{
 				leyendo=true; //Marcar leyendo como true.
 				indice=indice_aux; //Obtener índice.
-				cadena=cadena.substr(3+Herramientas::digitos_en_entero(indice)); //Cortar delimitador inicio. + 3 por el < y el $>
+				auto len=3+Herramientas::digitos_en_entero(indice);
+				cadena=len <= cadena.size() ? cadena.substr(len) : ""; //Cortar delimitador inicio. + 3 por el < y el $>
 			}
 
 			//Delimitador de fin encontrado?
@@ -101,17 +106,17 @@ void Localizador_base::procesar_fichero(t_cadena const& nombre_archivo)
 				this->insertar_cadena(indice, cadena_def);
 				cadena_def.clear();
 				cadena.clear();
-			}		
+			}
 
 			//Estamos leyendo?
 			if(leyendo)
 			{
 				cadena.append("\n"); //Insertar nueva línea.
-				cadena_def.append(cadena); //Insertar en cadena actual.	
+				cadena_def.append(cadena); //Insertar en cadena actual.
 				cadena.clear();	//Limpiar buffer.
 			}
-		}	
-	
+		}
+
 		archivo.close();
 	}
 

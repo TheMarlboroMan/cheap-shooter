@@ -1,7 +1,7 @@
 #ifndef ESTRUCTURA_ANIMACION_MENU_H
 #define ESTRUCTURA_ANIMACION_MENU_H
 
-/*Esto es para controlar animaciones de representaciones en movimiento, 
+/*Esto es para controlar animaciones de representaciones en movimiento,
 básicamente cosas del menú principal que vamos a mover de un sitio a otro,
 a hacer transparente o cosas así...*/
 
@@ -26,8 +26,9 @@ class Estructura_animacion
 	DLibV::Representacion * rep;
 	float porcentaje;
 
-	virtual void turno(float)=0; 
+	virtual void turno(float)=0;
 	virtual void forzar_finalizacion()=0;
+	virtual ~Estructura_animacion() {}
 
 	bool es_completa() {return this->porcentaje>=100;}
 
@@ -64,7 +65,7 @@ class Estructura_animacion_movimiento:public Estructura_animacion
 		this->dist_y=abs(this->pos_y-this->dest_y);
 
 		this->dist_tot=dist_x+dist_y;
-	
+
 		this->mult_porcentaje_x=DLibH::Herramientas::porcentaje(dist_x, dist_tot) / 100;
 		this->mult_porcentaje_y=DLibH::Herramientas::porcentaje(dist_y, dist_tot) / 100;
 	}
@@ -87,7 +88,7 @@ class Estructura_animacion_movimiento:public Estructura_animacion
 		}
 	}
 
-	//Devolverá la distancia restante, 
+	//Devolverá la distancia restante,
 
 	void comprobacion_y_movimiento(float delta, float vector, float &pos, float dest)
 	{
@@ -114,7 +115,7 @@ class Estructura_animacion_movimiento:public Estructura_animacion
 
 	Estructura_animacion_movimiento(DLibV::Representacion * p_rep, const DLibH::Vector_2d & pv, float dx, float dy):
 		Estructura_animacion(p_rep),
-		dest_x(dx), dest_y(dy), v(pv), 
+		dest_x(dx), dest_y(dy), v(pv),
 		dist_x(0), dist_y(0), dist_tot(0)
 	{
 		this->pos_x=p_rep->acc_posicion().x;
@@ -129,7 +130,7 @@ class Estructura_animacion_movimiento:public Estructura_animacion
 		//Horizontal...
 		comprobacion_y_movimiento(p_delta, this->v.x, this->pos_x, this->dest_x);
 		comprobacion_y_movimiento(p_delta, this->v.y, this->pos_y, this->dest_y);
-	
+
 		this->rep->establecer_posicion(this->pos_x, this->pos_y);
 
 		//Calcular porcentaje.
@@ -153,9 +154,9 @@ class Grupo_animacion
 {
 	private:
 
-	std::vector<Estructura_animacion *> animaciones; 
+	std::vector<Estructura_animacion *> animaciones;
 	std::vector<Estructura_animacion *>::iterator ini;
-	std::vector<Estructura_animacion *>::iterator fin;	
+	std::vector<Estructura_animacion *>::iterator fin;
 
 	float porcentaje;
 	float porcentaje_parcial;
@@ -167,7 +168,7 @@ class Grupo_animacion
 	float acc_porcentaje() const {return porcentaje;}
 
 	Grupo_animacion(float porc=0):
-		porcentaje(0), porcentaje_parcial(0), porcentaje_minimo_cancelar(porc), 
+		porcentaje(0), porcentaje_parcial(0), porcentaje_minimo_cancelar(porc),
 		total_animaciones(0)
 	{
 	}
@@ -185,7 +186,7 @@ class Grupo_animacion
 
 		animaciones.clear();
 	}
-	
+
 	void asignar_animacion(Estructura_animacion * temp)
 	{
 		animaciones.push_back(temp);
@@ -197,7 +198,7 @@ class Grupo_animacion
 	{
 		porcentaje_parcial=0;
 		ini=animaciones.begin();
-		
+
 		while(ini < fin)
 		{
 			(*ini)->turno(p_delta);

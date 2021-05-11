@@ -5,7 +5,7 @@ using namespace DLibV;
 Representacion_texto_auto::Representacion_texto_auto(const Representacion_texto_auto& p_otra)
 	:Representacion_texto(p_otra)
 {
-	
+
 }
 
 Representacion_texto_auto& Representacion_texto_auto::operator=(const Representacion_texto_auto& p_otra)
@@ -40,11 +40,12 @@ líneas.
 
 void Representacion_texto_auto::establecer_dimensiones_por_contenido()
 {
-	unsigned int cantidad_lineas=0, ancho_maximo=0, pos=0, ini=0, tam=0;
+	unsigned int cantidad_lineas=0, ancho_maximo=0;
+	std::size_t pos=0, ini=0, tam=0;
 	bool salir=false;
 	std::string c_aux;
 
-	if(!this->cadena.size()) 
+	if(!this->cadena.size())
 	{
 		DLibH::Log_motor::L()<<DLibH::Log_base_n(1)<<DLibH::Log_base_t()<<"Representacion_texto_auto::establecer_dimensiones_por_contenido() NO HAY CADENA"<<std::endl;
 		ancho_maximo=1;
@@ -55,7 +56,7 @@ void Representacion_texto_auto::establecer_dimensiones_por_contenido()
 		do
 		{
 			pos=this->cadena.find('\n', ini);
-		
+
 			//Esto nos garantiza salir en la última iteración.
 			salir=(pos==std::string::npos);
 			if(salir)
@@ -73,7 +74,7 @@ void Representacion_texto_auto::establecer_dimensiones_por_contenido()
 
 	}
 
-	this->establecer_dimensiones_area(ancho_maximo * this->ancho_glifo, cantidad_lineas * (this->alto_glifo+this->interlineado));	
+	this->establecer_dimensiones_area(ancho_maximo * this->ancho_glifo, cantidad_lineas * (this->alto_glifo+this->interlineado));
 	this->destruir_recurso();
 	this->iniciar_recurso();
 }

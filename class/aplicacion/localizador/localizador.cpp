@@ -13,10 +13,10 @@ DLibH::t_cadena const& Localizador::cadena_no_cargado() {return this->cadenas[C_
 DLibH::t_cadena const& Localizador::cadena_no_encontrado() {return this->cadenas[C_NO_ENCONTRADO];}
 
 void Localizador::inicializar(unsigned short int p_idioma)
-{		
-	DLibH::Localizador_base::cambiar_idioma(p_idioma);
+{
 
-	this->insertar_cadena(0, "NO SE HA ENCONTRADO EL ARCHIVO");	
+	DLibH::Localizador_base::cambiar_idioma(p_idioma);
+	this->insertar_cadena(0, "NO SE HA ENCONTRADO EL ARCHIVO");
 	this->insertar_cadena(1, "NO SE HA ENCONTRADO LA CLAVE");
 //	Localizador_base::inicializar();
 }

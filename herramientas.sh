@@ -94,11 +94,12 @@ do
 		;;
 
 		"c" | "C" )
+			mkdir -p objects_motor_sdl objects
 			make -f class/motor_sdl/makefile_motor_sdl;
 			make -f makefile_main;
 			echo "Listo"
 		;;
-	
+
 		"d" | "D" )
 			gdb ./a.out
 		;;

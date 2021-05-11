@@ -37,7 +37,7 @@ class Localizador_base
 	t_cadena generar_nombre_archivo(t_cadena const&);
 	void procesar_fichero(t_cadena const&);
 
-	public:	
+	public:
 
 	enum IDIOMAS{I_ESPANOL=0, I_INGLES=1};
 
